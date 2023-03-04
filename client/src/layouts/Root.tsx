@@ -1,8 +1,13 @@
+import { Flex } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
+import Navbar from '../components/navbar/Navbar'
+
 const Root = () => {
   return (
-    <div>
-      <div>Root page!</div>
-    </div>
+    <Flex direction={'column'} minH={'100vh'}>
+      <Navbar />
+      <Outlet />
+    </Flex>
   );
 }
 
