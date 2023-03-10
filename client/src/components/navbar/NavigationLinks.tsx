@@ -33,7 +33,7 @@ const NavigationLinks = () => {
         <MenuList>
           <MenuItem
             as={'a'}
-            href={'meals_random'}
+            href={'random_meal'}
             fontWeight={500}
             _focus={{ color: 'white', bg: 'redwood.200' }}
             _hover={{ color: 'white', bg: 'redwood.200' }}>
@@ -41,7 +41,7 @@ const NavigationLinks = () => {
           </MenuItem>
           <MenuItem
             as={'a'}
-            href={'drinks_random'}
+            href={'random_drink'}
             fontWeight={500}
             _hover={{ color: 'white', bg: 'redwood.200' }}>
             Drink Recipe

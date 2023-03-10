@@ -8,9 +8,9 @@ const AuthControls = () => {
         color={'black'}
         fontWeight={500}
         variant={'link'}
-        href={'signin'}
+        href={'login'}
         fontSize={'lg'}>
-        Sign In
+        Log In
       </Button>
       <Button
         as={'a'}
