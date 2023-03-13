@@ -1,6 +1,11 @@
-import { APIMealRecipe, MealRecipe } from "./types";
+import {
+  APIDrinkRecipe,
+  APIMealRecipe,
+  DrinkRecipe,
+  MealRecipe,
+} from "./types";
 
-const formatIngredients = (recipe: APIMealRecipe) => {
+const formatIngredients = (recipe: APIMealRecipe | APIDrinkRecipe) => {
   const items: string[] = [];
   const measurements: string[] = [];
   const ingredients: string[] = [];
@@ -11,13 +16,14 @@ const formatIngredients = (recipe: APIMealRecipe) => {
   }
 
   for (let i = 0; i < items.length; i++) {
-    ingredients.push(`${measurements[i]} ${items[i]}`);
+    if (measurements[i] === null) ingredients.push(items[i]);
+    else ingredients.push(`${measurements[i]} ${items[i]}`);
   }
 
   return ingredients;
 };
 
-export const formatResponse = (recipe: APIMealRecipe) => {
+export const formatMealResponse = (recipe: APIMealRecipe) => {
   const ingredients = formatIngredients(recipe);
 
   const formattedRecipe: MealRecipe = {
@@ -28,6 +34,22 @@ export const formatResponse = (recipe: APIMealRecipe) => {
     "instructions": recipe.strInstructions,
     "thumbnail": recipe.strMealThumb,
     "youtubeUrl": recipe.strYoutube,
+    ingredients
+  }
+  return formattedRecipe;
+};
+
+export const formatDrinkResponse = (recipe: APIDrinkRecipe) => {
+  const ingredients = formatIngredients(recipe);
+
+  const formattedRecipe: DrinkRecipe = {
+    "id": recipe.idDrink,
+    "title": recipe.strDrink,
+    "category": recipe.strCategory,
+    "alcoholic": recipe.strAlcoholic,
+    "glass": recipe.strGlass,
+    "instructions": recipe.strInstructions,
+    "thumbnail": recipe.strDrinkThumb,
     ingredients
   }
   return formattedRecipe;
