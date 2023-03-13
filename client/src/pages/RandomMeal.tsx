@@ -1,4 +1,4 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import { useState, useEffect } from 'react';
 import { MealRecipe } from "../types";
 import LoadingSpinner from '../components/ui/LoadingSpinner';
@@ -11,7 +11,6 @@ const RandomMeal = () => {
     fetch('/random_meal')
       .then(res => res.json())
       .then(data => {
-        console.log(data.recipe);
         setRecipe(data.recipe);
       });
   }, []);
