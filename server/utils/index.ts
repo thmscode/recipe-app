@@ -7,7 +7,7 @@ const formatIngredients = (recipe: APIMealRecipe) => {
 
   for (const [key, value] of Object.entries(recipe)) {
     if (key.includes('strIngredient') && (value !== '' && value !== null && value !== ' ')) items.push(value);
-    if (key.includes('strMeasure') && (value !== '' && value !== null && value !== ' ')) measurements.push(value);
+    if (key.includes('strMeasure') && (value !== null)) measurements.push(value);
   }
 
   for (let i = 0; i < items.length; i++) {
