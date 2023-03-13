@@ -126,5 +126,5 @@ export type DrinkRecipe = {
   glass: string,
   instructions: string,
   thumbnail: string,
-  ingredients: string[],
+  ingredients: string[]
 }
