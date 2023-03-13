@@ -5,9 +5,9 @@ const formatIngredients = (recipe: APIMealRecipe) => {
   const measurements: string[] = [];
   const ingredients: string[] = [];
 
-  for(const [key, value] of Object.entries(recipe)) {
-    if (key.includes('strIngredient') && value !== '') items.push(value);
-    if (key.includes('strMeasure') && value !== ' ') measurements.push(value);
+  for (const [key, value] of Object.entries(recipe)) {
+    if (key.includes('strIngredient') && (value !== '' && value !== null && value !== ' ')) items.push(value);
+    if (key.includes('strMeasure') && (value !== '' && value !== null && value !== ' ')) measurements.push(value);
   }
 
   for (let i = 0; i < items.length; i++) {
