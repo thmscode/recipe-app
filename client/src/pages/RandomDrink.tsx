@@ -1,7 +1,7 @@
 import { Grid } from "@chakra-ui/react";
 import { useState, useEffect } from 'react';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
-import Drink from '../components/ui/Drink';
+import Drink from '../components/content/Drink';
 import { DrinkRecipe } from "../types";
 
 const RandomDrink = () => {

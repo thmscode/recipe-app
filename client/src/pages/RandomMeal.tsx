@@ -2,7 +2,7 @@ import { Grid } from "@chakra-ui/react";
 import { useState, useEffect } from 'react';
 import { MealRecipe } from "../types";
 import LoadingSpinner from '../components/ui/LoadingSpinner';
-import Meal from "../components/ui/Meal";
+import Meal from "../components/content/Meal";
 
 const RandomMeal = () => {
   const [recipe, setRecipe] = useState<MealRecipe>();
