@@ -10,7 +10,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const NavigationLinks = () => {
   return (
-    <HStack spacing={6} ml={8}>
+    <HStack spacing={4} ml={8}>
       <Button
         as={'a'}
         color={'black'}
@@ -18,7 +18,7 @@ const NavigationLinks = () => {
         variant={'link'}
         href={'/'}
         fontSize={'lg'}>
-        Recipes
+        Browse
       </Button>
       <Menu>
         <MenuButton
