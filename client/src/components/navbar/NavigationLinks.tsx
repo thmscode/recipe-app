@@ -11,15 +11,27 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 const NavigationLinks = () => {
   return (
     <HStack spacing={4} ml={8}>
-      <Button
-        as={'a'}
-        color={'black'}
-        fontWeight={500}
-        variant={'link'}
-        href={'/'}
-        fontSize={'lg'}>
-        Browse
-      </Button>
+      <Menu>
+        <MenuButton
+          as={Button}
+          rightIcon={<ChevronDownIcon />}
+          bg={'transparent'}
+          fontSize={'lg'}
+          _hover={{ bg: 'transparent', textDecor: 'underline' }}
+          _active={{ bg: 'transparent', textDecor: 'underline' }}>
+          Browse
+        </MenuButton>
+        <MenuList>
+          <MenuItem
+            as={'a'}
+            href={'categories'}
+            fontWeight={500}
+            _focus={{ color: 'white', bg: 'redwood.200' }}
+            _hover={{ color: 'white', bg: 'redwood.200' }}>
+            Meals By Category
+          </MenuItem>
+        </MenuList>
+      </Menu>
       <Menu>
         <MenuButton
           as={Button}
