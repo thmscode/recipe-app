@@ -1,4 +1,4 @@
-import { Grid } from "@chakra-ui/react";
+import { Grid } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { MealRecipe } from "../types";
 import LoadingSpinner from '../components/ui/LoadingSpinner';
@@ -10,14 +10,12 @@ const RandomMeal = () => {
   useEffect(() => {
     fetch('/random_meal')
       .then(res => res.json())
-      .then(data => {
-        setRecipe(data.recipe);
-      });
+      .then(data => setRecipe(data.recipe));
   }, []);
 
   return (
     <Grid
-      templateColumns={'repeat(12, 1fr)'}
+      templateColumns={'repeat(12, auto)'}
       templateRows={'repeat(6, auto)'}
       px={48}
       py={8}
@@ -25,8 +23,7 @@ const RandomMeal = () => {
     >
       {(typeof recipe === 'undefined') ?
         <LoadingSpinner /> :
-        <Meal recipe={recipe} />
-      }
+        <Meal recipe={recipe} />}
     </Grid>
   );
 }

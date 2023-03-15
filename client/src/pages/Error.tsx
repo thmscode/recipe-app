@@ -11,7 +11,7 @@ const Error = () => {
       templateColumns={'repeat(12, 1fr)'}
       px={48}
       py={8}
-      gap={6}
+      gridGap={6}
     >
       <GridItem colSpan={12}>
         <Text fontSize={'4xl'}>404 - Page Not Found</Text>
