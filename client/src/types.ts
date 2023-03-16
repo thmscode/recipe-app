@@ -1,3 +1,10 @@
+export type Category = {
+  idCategory: number,
+  strCategory: string,
+  strCategoryThumb: string,
+  strCategoryDescription: string
+};
+
 export type MealRecipe = {
   id: string,
   title: string,
@@ -27,3 +34,9 @@ export type DrinkRecipe = {
 export type DrinkProps = {
   recipe: DrinkRecipe;
 };
+
+export type Recipe = {
+  strMeal: string,
+  strMealThumb: string,
+  idMeal: string
+}

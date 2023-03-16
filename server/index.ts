@@ -5,6 +5,14 @@ import { formatMealResponse, formatDrinkResponse } from './utils/index';
 const PORT = process.env.PORT;
 const app: Express = express();
 
+app.get('/api/meal_recipe/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then(res => res.json());
+  const recipe = formatMealResponse({ ...data.meals[0] });
+  res.json({ "recipe": recipe });
+});
+
 app.get('/api/categories/:category', async (req: Request, res: Response) => {
   const { category } = req.params;
   const data = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
