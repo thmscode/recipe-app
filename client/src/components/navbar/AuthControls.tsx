@@ -8,7 +8,7 @@ const AuthControls = () => {
         color={'black'}
         fontWeight={500}
         variant={'link'}
-        href={'login'}
+        href={'/login'}
         fontSize={'lg'}>
         Log In
       </Button>
@@ -16,7 +16,7 @@ const AuthControls = () => {
         as={'a'}
         color={'white'}
         fontWeight={500}
-        href={'signup'}
+        href={'/signup'}
         bg={'redwood.400'}
         fontSize={'lg'}
         _hover={{
