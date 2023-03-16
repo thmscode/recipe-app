@@ -1,14 +1,17 @@
 import {
   Box,
+  Divider,
   Grid,
   GridItem,
   Image,
+  Link,
   ListItem,
   Text,
   UnorderedList
 } from "@chakra-ui/react";
 import { MealProps } from "../../types";
 import { nanoid } from 'nanoid';
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const Meal: React.FC<MealProps> = ({ recipe }) => {
   const ingredientsArray1: string[] = [];
@@ -34,6 +37,10 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
         <Text as={'u'} fontSize={'2xl'}>Instructions</Text>
         <Box whiteSpace={'pre-wrap'} px={2}>
           <Text>{recipe.instructions}</Text>
+          <Divider my={2} />
+          <Link fontSize={'lg'} href={`${recipe.youtubeUrl}`} isExternal>
+            Tutorial <ExternalLinkIcon />
+          </Link>
         </Box>
       </GridItem>
       <GridItem colSpan={3}>
