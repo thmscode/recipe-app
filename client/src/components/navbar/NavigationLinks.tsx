@@ -1,16 +1,16 @@
 import {
-  HStack,
   Button,
+  Flex,
   Menu,
   MenuButton,
   MenuList,
-  MenuItem
+  MenuItem,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const NavigationLinks = () => {
   return (
-    <HStack spacing={4} ml={8}>
+    <Flex alignItems={'center'} gap={2} ml={8}>
       <Menu>
         <MenuButton
           as={Button}
@@ -60,7 +60,7 @@ const NavigationLinks = () => {
           </MenuItem>
         </MenuList>
       </Menu>
-    </HStack>
+    </Flex>
   );
 }
 
