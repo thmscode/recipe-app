@@ -13,7 +13,9 @@ const Navbar = () => {
         borderWidth={1}
         px={48}>
         <Flex>
-          <Text alignSelf={'center'} fontSize={'4xl'}>PrettyGood.</Text>
+          <Box as={'a'} href={'/'}>
+            <Text alignSelf={'center'} fontSize={'4xl'}>PrettyGood.</Text>
+          </Box>
           <NavigationLinks />
         </Flex>
         <AuthControls />

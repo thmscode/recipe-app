@@ -30,6 +30,14 @@ const NavigationLinks = () => {
             _hover={{ color: 'white', bg: 'redwood.200' }}>
             Meals By Category
           </MenuItem>
+          <MenuItem
+            as={'a'}
+            href={'/countries'}
+            fontWeight={500}
+            _focus={{ color: 'white', bg: 'redwood.200' }}
+            _hover={{ color: 'white', bg: 'redwood.200' }}>
+            Meals By Country
+          </MenuItem>
         </MenuList>
       </Menu>
       <Menu>
