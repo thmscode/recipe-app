@@ -15,14 +15,17 @@ import { useState, useEffect } from "react";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import { Recipe } from "../types";
 
-const Category = () => {
+const Country = () => {
   const [recipes, setRecipes] = useState<Recipe[]>();
-  const { category } = useParams();
+  const { country } = useParams();
 
   useEffect(() => {
-    fetch(`/api/categories/${category}`)
+    fetch(`/api/countries/${country}`)
       .then(res => res.json())
-      .then(data => setRecipes(data.recipes.meals));
+      .then(data => {
+        console.log(data)
+        setRecipes(data.countries.meals);
+      });
   }, []);
 
   return (
@@ -54,4 +57,4 @@ const Category = () => {
   );
 }
 
-export default Category;
+export default Country;
