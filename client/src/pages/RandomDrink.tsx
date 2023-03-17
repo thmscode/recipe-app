@@ -16,7 +16,7 @@ const RandomDrink = () => {
   return (
     <Grid
       templateColumns={'repeat(12, 1fr)'}
-      templateRows={'repeat(4, auto)'}
+      templateRows={'repeat(6, auto)'}
       px={48}
       py={8}
       gridGap={4}
