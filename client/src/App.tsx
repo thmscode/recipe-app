@@ -13,10 +13,11 @@ import Category from './pages/Category';
 import Recipe from './pages/Recipe';
 import CountriesList from './pages/CountriesList';
 import Country from './pages/Country';
+import Home from './pages/Home';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Root />}>
-    <Route index element={<div>Homepage</div>} />
+    <Route index element={<Home />} />
     <Route path="categories" element={<CategoriesList />} />
     <Route path="categories/:category" element={<Category />} />
     <Route path="/countries" element={<CountriesList />} />
