@@ -10,8 +10,7 @@ const LoadingSpinner = () => {
           emptyColor={'gray.300'}
           color={'redwood.200'}
           size={'xl'}
-          alignSelf={'center'}
-        />
+          alignSelf={'center'} />
       </Flex>
     </GridItem>
   );

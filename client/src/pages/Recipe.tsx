@@ -21,8 +21,7 @@ const Recipe = () => {
       templateRows={'repeat(6, auto)'}
       px={48}
       py={8}
-      gridGap={4}
-    >
+      gridGap={4}>
       {(typeof recipe === 'undefined') ?
         <LoadingSpinner /> :
         <Meal recipe={recipe} />}

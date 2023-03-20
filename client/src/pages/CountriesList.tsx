@@ -27,8 +27,7 @@ const CountriesList = () => {
       templateColumns={'repeat(12, 1fr)'}
       px={48}
       py={12}
-      gridGap={8}
-    >
+      gridGap={8}>
       {(typeof countries === 'undefined') ?
         <LoadingSpinner /> :
         (countries.map(country =>

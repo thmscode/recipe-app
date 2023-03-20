@@ -13,8 +13,7 @@ const Home = () => {
       flexGrow={'1'}
       direction={'column'}
       justifyContent={'center'}
-      px={36}
-    >
+      px={36}>
       <Flex justify={'space-between'} align={'center'} pb={24}>
         <Flex direction={'column'}>
           <Text fontSize={'6xl'} color={'white'} fontWeight={'bold'}>Healthy Eating</Text>
@@ -33,9 +32,7 @@ const Home = () => {
             bg={'redwood.400'}
             fontSize={'lg'}
             mt={3}
-            _hover={{
-              bg: 'redwood.200'
-            }}>
+            _hover={{ bg: 'redwood.200' }}>
             Get Started
           </Button>
         </Box>
