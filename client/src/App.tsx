@@ -15,6 +15,7 @@ import CountriesList from './pages/CountriesList';
 import Country from './pages/Country';
 import Home from './pages/Home';
 import LoginForm from './pages/LoginForm';
+import SignupForm from './pages/SignupForm';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Root />}>
@@ -27,7 +28,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="random_meal" element={<RandomMeal />} />
     <Route path="random_drink" element={<RandomDrink />} />
     <Route path="login" element={<LoginForm />} />
-    <Route path="signup" element={<div>Sign up page</div>} />
+    <Route path="signup" element={<SignupForm />} />
     <Route path="/api/*" element={<Error />} />
     <Route path="*" element={<Error />} />
   </Route>
