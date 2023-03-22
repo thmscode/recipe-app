@@ -17,23 +17,25 @@ import Home from './pages/Home';
 import LoginForm from './pages/LoginForm';
 import SignupForm from './pages/SignupForm';
 
-const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/" element={<Root />}>
-    <Route index element={<Home />} />
-    <Route path="categories" element={<CategoriesList />} />
-    <Route path="categories/:category" element={<Category />} />
-    <Route path="/countries" element={<CountriesList />} />
-    <Route path="/countries/:country" element={<Country />} />
-    <Route path="meal_recipe/:id" element={<Recipe />} />
-    <Route path="random_meal" element={<RandomMeal />} />
-    <Route path="random_drink" element={<RandomDrink />} />
-    <Route path="login" element={<LoginForm />} />
-    <Route path="signup" element={<SignupForm />} />
-    <Route path="/api/*" element={<Error />} />
-    <Route path="*" element={<Error />} />
-  </Route>
-
-));
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <Error />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "categories", element: <CategoriesList /> },
+      { path: "categories/:category", element: <Category /> },
+      { path: "countries", element: <CountriesList /> },
+      { path: "countries/:country", element: <Country /> },
+      { path: "meal_recipe/:id", element: <Recipe /> },
+      { path: "random_meal", element: <RandomMeal /> },
+      { path: "random_drink", element: <RandomDrink /> },
+      { path: "login", element: <LoginForm /> },
+      { path: "signup", element: <SignupForm /> },
+    ],
+  }
+]);
 
 const App = () => {
   return (
