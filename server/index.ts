@@ -1,9 +1,13 @@
 require('dotenv').config();
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 import { formatMealResponse, formatDrinkResponse } from './utils/index';
 
 const PORT = process.env.PORT;
 const app: Express = express();
+
+app.use(express.json());
+app.use(cors());
 
 app.get('/api/countries/:country', async (req: Request, res: Response) => {
   const { country } = req.params;
