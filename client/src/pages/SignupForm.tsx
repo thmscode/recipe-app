@@ -27,43 +27,69 @@ const SignupForm = () => {
         shadow={'xl'}
         p={12}
         w={'md'}>
-        <Stack spacing={4}>
-          <Text fontSize={'2xl'} fontWeight={'600'} align={'center'}>Sign Up</Text>
-          <HStack>
+        <Text fontSize={'2xl'} fontWeight={'600'} align={'center'} mb={4}>Sign Up</Text>
+        <form onSubmit={() => console.log('submit!')}>
+          <Stack spacing={4}>
+            <HStack>
+              <FormControl isRequired>
+                <FormLabel htmlFor={'firstName'}>First Name</FormLabel>
+                <Input
+                  id={'firstName'}
+                  type={'text'} />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel htmlFor={'lastName'}>Last Name</FormLabel>
+                <Input
+                  id={'lastName'}
+                  type={'text'} />
+              </FormControl>
+            </HStack>
             <FormControl isRequired>
-              <FormLabel>First Name</FormLabel>
-              <Input type={'text'}></Input>
+              <FormLabel htmlFor={'email'}>Email Address</FormLabel>
+              <Input
+                id={'email'}
+                type={'email'}
+                placeholder={'eg. myname@example.com'} />
             </FormControl>
             <FormControl isRequired>
-              <FormLabel>Last Name</FormLabel>
-              <Input type={'text'}></Input>
+              <FormLabel htmlFor={'password'}>Password</FormLabel>
+              <InputGroup>
+                <Input
+                  id={'password'}
+                  type={showPassword ? 'text' : 'password'} />
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() => setShowPassword((showPassword) => !showPassword)}>
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
             </FormControl>
-          </HStack>
-          <FormControl isRequired>
-            <FormLabel>Email Address</FormLabel>
-            <Input type={'email'} />
-          </FormControl>
-          <FormControl isRequired>
-            <FormLabel>Password</FormLabel>
-            <InputGroup>
-              <Input type={showPassword ? 'text' : 'password'} />
-              <InputRightElement h={'full'}>
-                <Button
-                  variant={'ghost'}
-                  onClick={() => setShowPassword((showPassword) => !showPassword)}
-                >
-                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </FormControl>
-          <Button
-            bg={'redwood.400'}
-            color={'white'}
-            _hover={{ bg: 'redwood.200' }}>
-            Sign up
-          </Button>
-        </Stack>
+            <FormControl isRequired>
+              <FormLabel htmlFor={'confirmPassword'}>Confirm Password</FormLabel>
+              <InputGroup>
+                <Input
+                  id={'confirmPassword'}
+                  type={showPassword ? 'text' : 'password'} />
+                <InputRightElement h={'full'}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() => setShowPassword((showPassword) => !showPassword)}>
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <Button
+              type={'submit'}
+              bg={'redwood.400'}
+              color={'white'}
+              _hover={{ bg: 'redwood.200' }}>
+              Sign up
+            </Button>
+          </Stack>
+        </form>
       </Box>
     </Flex>
   );

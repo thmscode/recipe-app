@@ -31,6 +31,7 @@ const LoginForm = () => {
             <Input type={'password'} />
           </FormControl>
           <Button
+            type={'submit'}
             bg={'redwood.400'}
             color={'white'}
             _hover={{ bg: 'redwood.200' }}>
