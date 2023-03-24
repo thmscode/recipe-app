@@ -8,7 +8,7 @@ const RandomDrink = () => {
   const [recipe, setRecipe] = useState<DrinkRecipe>();
 
   useEffect(() => {
-    fetch('/api/random_drink')
+    fetch('/api/recipes/random_drink')
       .then(res => res.json())
       .then(data => setRecipe(data.recipe));
   }, []);

@@ -8,7 +8,7 @@ const RandomMeal = () => {
   const [recipe, setRecipe] = useState<MealRecipe>();
 
   useEffect(() => {
-    fetch('/api/random_meal')
+    fetch('/api/recipes/random_meal')
       .then(res => res.json())
       .then(data => setRecipe(data.recipe));
   }, []);

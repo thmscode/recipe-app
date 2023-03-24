@@ -22,10 +22,7 @@ const Country = () => {
   useEffect(() => {
     fetch(`/api/countries/${country}`)
       .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setRecipes(data.countries.meals);
-      });
+      .then(data => setRecipes(data.recipes.meals));
   }, []);
 
   return (

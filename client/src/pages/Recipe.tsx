@@ -10,7 +10,7 @@ const Recipe = () => {
   const [recipe, setRecipe] = useState<MealRecipe>();
 
   useEffect(() => {
-    fetch(`/api/meal_recipe/${id}`)
+    fetch(`/api/recipes/${id}`)
       .then(res => res.json())
       .then(data => setRecipe(data.recipe));
   }, []);
