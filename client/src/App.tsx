@@ -1,9 +1,4 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './layouts/Root';
 import RandomDrink from './pages/RandomDrink';
 import RandomMeal from './pages/RandomMeal';
@@ -14,8 +9,8 @@ import Recipe from './pages/Recipe';
 import CountriesList from './pages/CountriesList';
 import Country from './pages/Country';
 import Home from './pages/Home';
-import LoginForm from './pages/LoginForm';
-import SignupForm from './pages/SignupForm';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +26,8 @@ const router = createBrowserRouter([
       { path: "meal_recipe/:id", element: <Recipe /> },
       { path: "random_meal", element: <RandomMeal /> },
       { path: "random_drink", element: <RandomDrink /> },
-      { path: "login", element: <LoginForm /> },
-      { path: "signup", element: <SignupForm /> },
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup /> },
     ],
   }
 ]);
