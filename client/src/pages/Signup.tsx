@@ -15,7 +15,7 @@ const Signup = () => {
         rounded={'lg'}
         shadow={'xl'}
         p={12}
-        w={'md'}>
+        w={'lg'}>
         <Text fontSize={'2xl'} fontWeight={'600'} align={'center'} mb={4}>Sign Up</Text>
         <SignupForm />
       </Box>
