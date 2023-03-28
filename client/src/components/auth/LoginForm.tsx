@@ -4,21 +4,33 @@ import {
   FormLabel,
   Input,
   Stack,
-  Text
 } from "@chakra-ui/react";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoginSchema, LoginFormValues } from "../../zod-schemas";
+import FormErrorMsg from "../ui/FormErrorMsg";
 
 const LoginForm = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormValues>({ resolver: zodResolver(LoginSchema) });
+
   return (
-    <form onSubmit={() => console.log('submit!')}>
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
       <Stack spacing={6}>
-        <Text fontSize={'2xl'} fontWeight={'600'} align={'center'}>Login</Text>
-        <FormControl isRequired>
-          <FormLabel>Email</FormLabel>
-          <Input type={'email'} />
+        <FormControl>
+          <FormLabel htmlFor={'email'}>Email</FormLabel>
+          <Input
+            id={'email'}
+            type={'email'}
+            {...register('email')} />
+          {errors?.email && <FormErrorMsg>{errors.email.message}</FormErrorMsg>}
         </FormControl>
-        <FormControl isRequired>
-          <FormLabel>Password</FormLabel>
-          <Input type={'password'} />
+        <FormControl>
+          <FormLabel htmlFor={'password'}>Password</FormLabel>
+          <Input
+            id={'password'}
+            type={'password'}
+            {...register('password')} />
+            {errors?.password && <FormErrorMsg>{errors.password.message}</FormErrorMsg>}
         </FormControl>
         <Button
           type={'submit'}

@@ -11,61 +11,69 @@ import {
 } from "@chakra-ui/react";
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SignupSchema, SignupFormValues } from "../../zod-schemas";
 import FormErrorMsg from "../ui/FormErrorMsg";
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm<SignupFormValues>({ resolver: zodResolver(SignupSchema) });
 
   return (
     <form onSubmit={handleSubmit((data) => console.log(data))}>
       <Stack spacing={6}>
         <HStack>
-          <FormControl isRequired>
-            <FormLabel htmlFor={'firstName'}>First Name</FormLabel>
+          <FormControl>
+            <FormLabel htmlFor={'firstName'}>
+              First Name
+              <span style={{ color: 'red' }}> * </span>
+            </FormLabel>
             <Input
               id={'firstName'}
               type={'text'}
-              {...register('firstName', {
-                required: true,
-                pattern: /^[A-Za-z\-]+$/i,
-                maxLength: 20
-              })} />
-            {errors.firstName?.type === 'maxLength' && <FormErrorMsg>Cannot exceed 20 characters</FormErrorMsg>}
-            {errors.firstName?.type === 'pattern' && <FormErrorMsg>Alphabetical characters only</FormErrorMsg>}
+              placeholder={'First Name'}
+              {...register('firstName')} />
+            {errors?.firstName && <FormErrorMsg>{errors.firstName.message}</FormErrorMsg>}
           </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel htmlFor={'lastName'}>Last Name</FormLabel>
+          <FormControl>
+            <FormLabel htmlFor={'lastName'}>
+              Last Name
+              <span style={{ color: 'red' }}> * </span>
+            </FormLabel>
             <Input
               id={'lastName'}
               type={'text'}
-              {...register('lastName', {
-                required: true,
-                pattern: /^[A-Za-z\-]+$/i,
-                maxLength: 20
-              })} />
-            {errors.lastName?.type === 'maxLength' && <FormErrorMsg>Cannot exceed 20 characters</FormErrorMsg>}
-            {errors.lastName?.type === 'pattern' && <FormErrorMsg>Alphabetical characters only</FormErrorMsg>}
+              placeholder={'Last Name'}
+              {...register('lastName')} />
+            {errors?.lastName && <FormErrorMsg>{errors.lastName.message}</FormErrorMsg>}
           </FormControl>
         </HStack>
 
-        <FormControl isRequired>
-          <FormLabel htmlFor={'email'}>Email Address</FormLabel>
+        <FormControl>
+          <FormLabel htmlFor={'email'}>
+            Email Address
+            <span style={{ color: 'red' }}> * </span>
+          </FormLabel>
           <Input
             id={'email'}
             type={'email'}
             placeholder={'eg. myname@example.com'}
-            {...register('email', { required: true, minLength: 8 })} />
+            {...register('email')} />
+          {errors?.email && <FormErrorMsg>{errors.email.message}</FormErrorMsg>}
         </FormControl>
 
-        <FormControl isRequired>
-          <FormLabel htmlFor={'password'}>Password</FormLabel>
+        <FormControl>
+          <FormLabel htmlFor={'password'}>
+            Password
+            <span style={{ color: 'red' }}> * </span>
+          </FormLabel>
           <InputGroup>
             <Input
               id={'password'}
               type={showPassword ? 'text' : 'password'}
-              {...register('password', { required: true, minLength: 8 })} />
+              placeholder={'Enter your desired password'}
+              {...register('password')} />
             <InputRightElement h={'full'}>
               <Button
                 variant={'ghost'}
@@ -74,16 +82,20 @@ const SignupForm = () => {
               </Button>
             </InputRightElement>
           </InputGroup>
-          {errors.password?.type === 'minLength' && <FormErrorMsg>Must be longer than 8 characters</FormErrorMsg>}
+          {errors?.password && <FormErrorMsg>{errors.password.message}</FormErrorMsg>}
         </FormControl>
 
-        <FormControl isRequired>
-          <FormLabel htmlFor={'confirmPassword'}>Confirm Password</FormLabel>
+        <FormControl>
+          <FormLabel htmlFor={'confirmPassword'}>
+            Confirm Password
+            <span style={{ color: 'red' }}> * </span>
+          </FormLabel>
           <InputGroup>
             <Input
               id={'confirmPassword'}
               type={showPassword ? 'text' : 'password'}
-              {...register('confirmPassword', { required: true, minLength: 8 })} />
+              placeholder={'Re-enter your password'}
+              {...register('confirmPassword')} />
             <InputRightElement h={'full'}>
               <Button
                 variant={'ghost'}
@@ -92,8 +104,9 @@ const SignupForm = () => {
               </Button>
             </InputRightElement>
           </InputGroup>
+          {errors?.confirmPassword && <FormErrorMsg>{errors.confirmPassword.message}</FormErrorMsg>}
         </FormControl>
-        
+
         <Button
           type={'submit'}
           bg={'redwood.400'}
