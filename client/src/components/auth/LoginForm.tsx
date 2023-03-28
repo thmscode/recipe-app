@@ -9,12 +9,30 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, LoginFormValues } from "../../zod-schemas";
 import FormErrorMsg from "../ui/FormErrorMsg";
+import { auth } from "../../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormValues>({ resolver: zodResolver(LoginSchema) });
+  const navigate = useNavigate();
+
+  const submitHandler = (data: LoginFormValues) => {
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        navigate('/');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMsg = error.message;
+        console.log(`${errorCode} - ${errorMsg}`);
+      });
+  };
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form onSubmit={handleSubmit(submitHandler)}>
       <Stack spacing={6}>
         <FormControl>
           <FormLabel htmlFor={'email'}>Email</FormLabel>
@@ -30,7 +48,7 @@ const LoginForm = () => {
             id={'password'}
             type={'password'}
             {...register('password')} />
-            {errors?.password && <FormErrorMsg>{errors.password.message}</FormErrorMsg>}
+          {errors?.password && <FormErrorMsg>{errors.password.message}</FormErrorMsg>}
         </FormControl>
         <Button
           type={'submit'}

@@ -14,13 +14,31 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SignupSchema, SignupFormValues } from "../../zod-schemas";
 import FormErrorMsg from "../ui/FormErrorMsg";
+import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { register, handleSubmit, formState: { errors } } = useForm<SignupFormValues>({ resolver: zodResolver(SignupSchema) });
+  const navigate = useNavigate();
+
+  const submitHandler = async (data: SignupFormValues) => {
+    await createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        navigate('/');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMsg = error.message;
+        console.log(`${errorCode} - ${errorMsg}`);
+      });
+  };
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form onSubmit={handleSubmit(submitHandler)}>
       <Stack spacing={6}>
         <HStack>
           <FormControl>
