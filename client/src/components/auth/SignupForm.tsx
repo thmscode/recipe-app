@@ -7,6 +7,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Spinner,
   Stack
 } from "@chakra-ui/react";
 import { useState } from 'react';
@@ -21,18 +22,22 @@ import { useNavigate } from "react-router-dom";
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { register, handleSubmit, formState: { errors } } = useForm<SignupFormValues>({ resolver: zodResolver(SignupSchema) });
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const submitHandler = async (data: SignupFormValues) => {
+    setLoading(true);
     await createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        setLoading(false);
         navigate('/');
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMsg = error.message;
+        setLoading(false);
         console.log(`${errorCode} - ${errorMsg}`);
       });
   };
@@ -125,13 +130,17 @@ const SignupForm = () => {
           {errors?.confirmPassword && <FormErrorMsg>{errors.confirmPassword.message}</FormErrorMsg>}
         </FormControl>
 
-        <Button
-          type={'submit'}
-          bg={'redwood.400'}
-          color={'white'}
-          _hover={{ bg: 'redwood.200' }}>
-          Sign up
-        </Button>
+        {loading ?
+          <Button bg={'redwood.400'}>
+            <Spinner color={'white'} />
+          </Button> :
+          <Button
+            type={'submit'}
+            bg={'redwood.400'}
+            color={'white'}
+            _hover={{ bg: 'redwood.200' }}>
+            Sign up
+          </Button>}
       </Stack>
     </form>
   );
