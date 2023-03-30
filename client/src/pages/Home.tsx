@@ -4,8 +4,11 @@ import {
   Flex,
   Text
 } from "@chakra-ui/react";
+import { useAuth } from "../contexts/auth-context";
 
 const Home = () => {
+  const { currentUser } = useAuth();
+
   return (
     <Flex
       bgImage={"linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1940&q=80')"}
@@ -28,7 +31,7 @@ const Home = () => {
             as={'a'}
             color={'white'}
             fontWeight={500}
-            href={'/signup'}
+            href={currentUser ? '/categories' : '/signup'}
             bg={'redwood.400'}
             fontSize={'lg'}
             mt={3}
