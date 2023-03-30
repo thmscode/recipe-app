@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { formatMealResponse, formatDrinkResponse } from "../utils";
+import { formatMealResponse, formatDrinkResponse } from "../utils/helperFn";
 
 export const fetchRandomMealRecipe = async (req: Request, res: Response) => {
   const data = await fetch('https://www.themealdb.com/api/json/v1/1/random.php')
