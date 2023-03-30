@@ -3,9 +3,15 @@ import {
   Flex,
   Text
 } from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
 import LoginForm from "../components/auth/LoginForm";
+import { useAuth } from "../contexts/auth-context";
 
 const Login = () => {
+  const { currentUser } = useAuth();
+
+  if (currentUser) return <Navigate to='/' />
+
   return (
     <Flex
       justifyContent={'center'}
