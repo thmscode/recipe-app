@@ -1,8 +1,12 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 import NavigationLinks from './NavigationLinks';
-import AuthControls from './AuthControls';
+import UnauthorizedControls from './UnauthorizedControls';
+import AuthorizedControls from './AuthorizedControls';
+import { useAuth } from '../../contexts/auth-context';
 
 const Navbar = () => {
+  const { currentUser } = useAuth();
+
   return (
     <Box>
       <Flex
@@ -18,7 +22,10 @@ const Navbar = () => {
           </Box>
           <NavigationLinks />
         </Flex>
-        <AuthControls />
+        {!(currentUser) ?
+          <UnauthorizedControls /> :
+          <AuthorizedControls />
+        }
       </Flex>
     </Box>
   );

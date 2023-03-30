@@ -1,6 +1,6 @@
-import { HStack, Button } from "@chakra-ui/react";
+import { Button, HStack } from "@chakra-ui/react";
 
-const AuthControls = () => {
+const UnauthorizedControls = () => {
   return (
     <HStack spacing={6}>
       <Button
@@ -26,4 +26,4 @@ const AuthControls = () => {
   );
 }
 
-export default AuthControls;
+export default UnauthorizedControls;

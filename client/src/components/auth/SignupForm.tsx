@@ -1,5 +1,6 @@
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
+  Box,
   Button,
   FormControl,
   FormLabel,
@@ -8,7 +9,8 @@ import {
   InputGroup,
   InputRightElement,
   Spinner,
-  Stack
+  Stack,
+  Text
 } from "@chakra-ui/react";
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
@@ -20,26 +22,22 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
+  const [error, setError] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { register, handleSubmit, formState: { errors } } = useForm<SignupFormValues>({ resolver: zodResolver(SignupSchema) });
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const submitHandler = async (data: SignupFormValues) => {
+    setError('');
     setLoading(true);
     await createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        setLoading(false);
-        navigate('/');
-      })
+      .then(() => navigate('/'))
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMsg = error.message;
-        setLoading(false);
-        console.log(`${errorCode} - ${errorMsg}`);
+        if (error.code === 'auth/email-already-in-use') setError('Email already in use.')
+        else setError('Failed to create an account. Please try again later.')
       });
+    setLoading(false);
   };
 
   return (
@@ -130,17 +128,18 @@ const SignupForm = () => {
           {errors?.confirmPassword && <FormErrorMsg>{errors.confirmPassword.message}</FormErrorMsg>}
         </FormControl>
 
-        {loading ?
-          <Button bg={'redwood.400'}>
-            <Spinner color={'white'} />
-          </Button> :
+        <Box>
           <Button
+            disabled={loading}
             type={'submit'}
             bg={'redwood.400'}
+            w={'100%'}
             color={'white'}
             _hover={{ bg: 'redwood.200' }}>
-            Sign up
-          </Button>}
+            {loading ? <Spinner color={'white'} /> : 'Sign Up'}
+          </Button>
+          {error && <Text mt={3} fontSize={'md'} align={'center'} color={'red.500'} fontWeight={500}>{error}</Text>}
+        </Box>
       </Stack>
     </form>
   );
