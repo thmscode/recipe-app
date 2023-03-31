@@ -32,7 +32,21 @@ const SignupForm = () => {
     setError('');
     setLoading(true);
     await createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => navigate('/'))
+      .then((userCredentials) => userCredentials.user.getIdToken())
+      .then((token) => {
+        fetch('/api/user/register', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName: data.firstName,
+            lastName: data.lastName,
+          })
+        })
+      })
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') setError('Email already in use.')
         else setError('Failed to create an account. Please try again later.')
