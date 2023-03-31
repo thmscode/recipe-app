@@ -1,11 +1,13 @@
 import { Router } from 'express';
 import {
-  registerUser
+  registerUser,
+  addRecipeToFavourites
 } from '../controllers/user';
-import { validateUserForRegistration } from '../middleware';
+import { validateUser } from '../middleware';
 
 const router = Router();
 
-router.post('/register', validateUserForRegistration, registerUser);
+router.post('/register', validateUser, registerUser);
+router.post('/addRecipeToFavourites', validateUser, addRecipeToFavourites);
 
 export default router;

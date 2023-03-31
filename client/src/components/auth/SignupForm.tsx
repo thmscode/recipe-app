@@ -19,14 +19,12 @@ import { SignupSchema, SignupFormValues } from "../../zod-schemas";
 import FormErrorMsg from "../ui/FormErrorMsg";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const [error, setError] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { register, handleSubmit, formState: { errors } } = useForm<SignupFormValues>({ resolver: zodResolver(SignupSchema) });
   const [loading, setLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   const submitHandler = async (data: SignupFormValues) => {
     setError('');
