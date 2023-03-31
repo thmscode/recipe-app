@@ -19,21 +19,11 @@ const userSchema = new Schema({
     unique: true,
     required: true
   },
-  saved: [
+  favourites: [
     {
-      id: {
-        type: String,
-        unique: true,
-        required: true
-      },
-      title: {
-        type: String,
-        required: true
-      },
-      imgUrl: {
-        type: String,
-        required: true
-      }
+      id: String,
+      title: String,
+      imgUrl: String
     }
   ]
 });
