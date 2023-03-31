@@ -50,7 +50,21 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
   };
 
   const removeHandler = () => {
-    console.log('removed');
+    if (currentUser) {
+      currentUser.getIdToken()
+        .then((token) => {
+          fetch('/api/user/removeRecipeFromFavourites', {
+            method: 'DELETE',
+            headers: {
+              'Accept': 'application/json',
+              'Authorization': 'Bearer ' + token,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: recipe.id })
+          })
+        })
+        .catch((error) => { console.log('failed') });
+    }
   };
 
   return (

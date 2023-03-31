@@ -18,8 +18,20 @@ export const addRecipeToFavourites = async (req: Request, res: Response) => {
     const user = await User.findOne({ "uid": uid });
     user?.favourites.push(recipe);
     await user?.save();
-    return res.json({ message: 'Recipe added to favourites.' })
+    return res.json({ message: 'Recipe added to favourites.' });
   } catch (e) {
-    return res.json({ message: 'Failed to add to favourites.' })
+    return res.json({ message: 'Failed to add to favourites.' });
+  }
+};
+
+export const removeRecipeFromFavourites = async (req: Request, res: Response) => {
+  const { id } = req.body;
+  const uid = res.locals.uid;
+
+  try {
+    await User.findOneAndUpdate({ "uid": uid }, { $pull: { favourites: { id } } });
+    return res.json({ message: 'Recipe removed from favourites.' });
+  } catch (e) {
+    return res.json({ message: 'Recipe not found.' });
   }
 };
