@@ -35,3 +35,14 @@ export const removeRecipeFromFavourites = async (req: Request, res: Response) =>
     return res.json({ message: 'Recipe not found.' });
   }
 };
+
+export const getFavourites = async (req: Request, res: Response) => {
+  const uid = res.locals.uid;
+  try {
+    const user = await User.findOne({ "uid": uid });
+    if (user) return res.json({ firstName: user.firstName, favourites: user.favourites });
+    else return res.json({ message: 'User not found.' });
+  } catch (e) {
+    return res.json({ message: 'User not found.' });
+  }
+};
