@@ -17,6 +17,7 @@ import { useAuth } from "../../contexts/auth-context";
 import { useNavigate } from "react-router-dom";
 
 const Meal: React.FC<MealProps> = ({ recipe }) => {
+  //state to hold whether recipe is a favourite of the logged in user
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const ingredientsArray1: string[] = [];
@@ -27,6 +28,8 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
     if (i % 2 === 1) ingredientsArray2.push(ingredient);
   })
 
+  //useEffect to check if the recipe is favourited by the logged in user
+
   const favouritesHandler = () => {
     if (currentUser) {
       currentUser.getIdToken()
@@ -35,7 +38,7 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
-              'Authorization': 'Bearer ' + token,
+              'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -57,7 +60,7 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
             method: 'DELETE',
             headers: {
               'Accept': 'application/json',
-              'Authorization': 'Bearer ' + token,
+              'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ id: recipe.id })

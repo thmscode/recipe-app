@@ -36,7 +36,7 @@ const SignupForm = () => {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
-            'Authorization': 'Bearer ' + token,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
