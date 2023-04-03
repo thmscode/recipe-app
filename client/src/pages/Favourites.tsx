@@ -30,9 +30,10 @@ const Favourites = () => {
 
   return (
     <Grid
-      templateColumns={'repeat(12, auto)'}
+      templateColumns={'repeat(12, 1fr)'}
       px={48}
-      py={8}>
+      py={8}
+      gridGap={4}>
       {user ?
         <FavouritesList
           firstName={user.firstName}
