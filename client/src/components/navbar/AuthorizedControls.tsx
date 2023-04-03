@@ -33,15 +33,7 @@ const AuthorizedControls = () => {
         <MenuList>
           <MenuItem
             as={'a'}
-            href={'/'}
-            fontWeight={500}
-            _focus={{ color: 'white', bg: 'redwood.200' }}
-            _hover={{ color: 'white', bg: 'redwood.200' }}>
-            View Profile
-          </MenuItem>
-          <MenuItem
-            as={'a'}
-            href={'/'}
+            href={'/favourites'}
             fontWeight={500}
             _hover={{ color: 'white', bg: 'redwood.200' }}>
             View Favourites

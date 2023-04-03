@@ -12,7 +12,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import ProtectedRoutes from './utils/ProtectedRoutes';
-import Profile from './pages/Profile';
 import Favourites from './pages/Favourites';
 
 const router = createBrowserRouter([
@@ -35,8 +34,7 @@ const router = createBrowserRouter([
         element: <ProtectedRoutes />,
         errorElement: <Error />,
         children: [
-          { path: "/profile", element: <Profile /> },
-          { path: "/favourites", element: <Favourites /> }
+          { path: "/favourites", element: <Favourites /> },
         ]
       }
     ]
