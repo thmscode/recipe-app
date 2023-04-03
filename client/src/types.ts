@@ -40,3 +40,12 @@ export type Recipe = {
   strMealThumb: string,
   idMeal: string
 };
+
+export type UserObject = {
+  firstName: string,
+  favourites: {
+    id: string,
+    title: string,
+    imgUrl: string
+  }[]
+};
