@@ -16,9 +16,16 @@ export const addRecipeToFavourites = async (req: Request, res: Response) => {
 
   try {
     const user = await User.findOne({ "uid": uid });
-    user?.favourites.push(recipe);
-    await user?.save();
-    return res.status(201).json({ message: 'Recipe added to favourites.' });
+    if (user) {
+      const found = user.favourites.find(recipe => recipe.id === id);
+      if (found) return res.status(400).json({ message: 'Recipe already exists.' });
+      else {
+        user.favourites.push(recipe);
+        await user.save();
+        return res.status(201).json({ message: 'Recipe added to favourites.' });
+      }
+    }
+    return res.status(400).json({ message: 'User not found.' });
   } catch (e) {
     return res.status(400).json({ message: 'Failed to add to favourites.' });
   }
