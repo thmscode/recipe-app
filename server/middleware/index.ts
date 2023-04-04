@@ -3,7 +3,7 @@ const admin = require('../firebase/firebase-config');
 
 export const validateUser = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.headers.authorization) {
-    return res.json({ message: 'Unauthorized' });
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 
   const token = req.headers.authorization?.split(' ')[1];
@@ -13,6 +13,6 @@ export const validateUser = async (req: Request, res: Response, next: NextFuncti
     res.locals.uid = decodedValue.uid;
     return next();
   } else {
-    return res.json({ message: 'Failed to validate token' });
+    return res.status(401).json({ message: 'Failed to validate token' });
   }
 };

@@ -7,7 +7,7 @@ export const fetchRandomMealRecipe = async (req: Request, res: Response) => {
 
   const recipe = formatMealResponse({ ...data.meals[0] });
 
-  res.json({ "recipe": recipe });
+  return res.status(200).json({ "recipe": recipe });
 };
 
 export const fetchRandomDrinkRecipe = async (req: Request, res: Response) => {
@@ -16,7 +16,7 @@ export const fetchRandomDrinkRecipe = async (req: Request, res: Response) => {
 
   const recipe = formatDrinkResponse({ ...data.drinks[0] });
 
-  res.json({ "recipe": recipe });
+  return res.status(200).json({ "recipe": recipe });
 };
 
 export const fetchMealRecipe = async (req: Request, res: Response) => {
@@ -27,5 +27,5 @@ export const fetchMealRecipe = async (req: Request, res: Response) => {
 
   const recipe = formatMealResponse({ ...data.meals[0] });
 
-  res.json({ "recipe": recipe });
+  return res.status(200).json({ "recipe": recipe });
 };

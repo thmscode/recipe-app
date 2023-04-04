@@ -4,7 +4,7 @@ export const fetchCountriesList = async (req: Request, res: Response) => {
   const data = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list')
     .then(res => res.json());
 
-  res.json({ "countries": data });
+  return res.status(200).json({ "countries": data });
 };
 
 export const fetchCountry = async (req: Request, res: Response) => {
@@ -13,5 +13,5 @@ export const fetchCountry = async (req: Request, res: Response) => {
   const data = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${country}`)
     .then(res => res.json());
 
-  res.json({ "recipes": data });
+  return res.status(200).json({ "recipes": data });
 };
