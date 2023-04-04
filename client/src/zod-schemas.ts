@@ -14,7 +14,8 @@ export const SignupSchema = z.object(
       .min(1, 'Email is required')
       .email('Email is invalid'),
     password: z.string()
-      .min(8, 'Password must contain at least 8 character(s)'),
+      .min(8, 'Password must contain at least 8 character(s)')
+      .regex(/^[A-Za-z0-9#$%&*]+$/i, 'Only (#, $, %, &, *) special characters allowed'),
     confirmPassword: z.string()
       .min(1, 'Please re-enter your password')
   })
