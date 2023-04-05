@@ -6,12 +6,16 @@ import {
   getFavourites,
   isRecipeFavourited
 } from '../controllers/user';
-import { validateUser } from '../middleware';
+import {
+  validateUser,
+  validateRegisterReqBody,
+  validateRecipeReqBody
+} from '../middleware';
 
 const router = Router();
 
-router.post('/register', validateUser, registerUser);
-router.post('/addRecipeToFavourites', validateUser, addRecipeToFavourites);
+router.post('/register', validateUser, validateRegisterReqBody, registerUser);
+router.post('/addRecipeToFavourites', validateUser, validateRecipeReqBody, addRecipeToFavourites);
 router.delete('/removeRecipeFromFavourites', validateUser, removeRecipeFromFavourites)
 router.get('/getFavourites', validateUser, getFavourites);
 router.post('/isRecipeFavourited', validateUser, isRecipeFavourited);
