@@ -1,7 +1,7 @@
 import {
   Box,
-  Button,
   Divider,
+  Flex,
   Grid,
   GridItem,
   Image,
@@ -13,13 +13,9 @@ import {
 import { MealProps } from "../../types";
 import { nanoid } from 'nanoid';
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { useAuth } from "../../contexts/auth-context";
-import { useNavigate } from "react-router-dom";
+import FavouriteBtn from "./FavouriteBtn";
 
 const Meal: React.FC<MealProps> = ({ recipe }) => {
-  //state to hold whether recipe is a favourite of the logged in user
-  const { currentUser } = useAuth();
-  const navigate = useNavigate();
   const ingredientsArray1: string[] = [];
   const ingredientsArray2: string[] = [];
 
@@ -28,57 +24,19 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
     if (i % 2 === 1) ingredientsArray2.push(ingredient);
   })
 
-  //useEffect to check if the recipe is favourited by the logged in user
-
-  const favouritesHandler = () => {
-    if (currentUser) {
-      currentUser.getIdToken()
-        .then((token) => {
-          fetch('/api/user/addRecipeToFavourites', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              id: recipe.id,
-              title: recipe.title,
-              imgUrl: recipe.thumbnail
-            })
-          })
-        })
-        .catch((error) => { console.log('failed') });
-    } else navigate('/login')
-  };
-
-  const removeHandler = () => {
-    if (currentUser) {
-      currentUser.getIdToken()
-        .then((token) => {
-          fetch('/api/user/removeRecipeFromFavourites', {
-            method: 'DELETE',
-            headers: {
-              'Accept': 'application/json',
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ id: recipe.id })
-          })
-        })
-        .catch((error) => { console.log('failed') });
-    }
-  };
-
   return (
     <>
       <GridItem colSpan={12}>
-        <Box>
-          <Text fontSize={'3xl'}>{recipe.title}</Text>
-          <Text fontSize={'md'}>{recipe.area} - {recipe.category}</Text>
-          <Button onClick={favouritesHandler}>Add to Favourites</Button>
-          <Button onClick={removeHandler}>Remove from Favourites</Button>
-        </Box>
+        <Flex justify={'space-between'} align={'center'}>
+          <Box>
+            <Text fontSize={'3xl'}>{recipe.title}</Text>
+            <Text fontSize={'md'}>{recipe.area} - {recipe.category}</Text>
+          </Box>
+          <FavouriteBtn
+            recipeId={recipe.id}
+            recipeTitle={recipe.title}
+            recipeThumbnail={recipe.thumbnail} />
+        </Flex>
       </GridItem>
       <GridItem colSpan={3}>
         <Image src={recipe.thumbnail} />

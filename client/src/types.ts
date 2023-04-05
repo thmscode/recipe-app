@@ -49,3 +49,9 @@ export type UserObject = {
     imgUrl: string
   }[]
 };
+
+export type FavouriteBtnProps = {
+  recipeId: String,
+  recipeTitle: String,
+  recipeThumbnail: String
+};
