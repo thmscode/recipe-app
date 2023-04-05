@@ -3,7 +3,8 @@ import {
   registerUser,
   addRecipeToFavourites,
   removeRecipeFromFavourites,
-  getFavourites
+  getFavourites,
+  isRecipeFavourited
 } from '../controllers/user';
 import { validateUser } from '../middleware';
 
@@ -13,5 +14,6 @@ router.post('/register', validateUser, registerUser);
 router.post('/addRecipeToFavourites', validateUser, addRecipeToFavourites);
 router.delete('/removeRecipeFromFavourites', validateUser, removeRecipeFromFavourites)
 router.get('/getFavourites', validateUser, getFavourites);
+router.post('/isRecipeFavourited', validateUser, isRecipeFavourited);
 
 export default router;

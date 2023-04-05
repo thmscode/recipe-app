@@ -53,3 +53,18 @@ export const getFavourites = async (req: Request, res: Response) => {
     return res.status(400).json({ message: 'User not found.' });
   }
 };
+
+export const isRecipeFavourited = (req: Request, res: Response) => {
+  const uid = res.locals.uid;
+  const { id } = req.body;
+  try {
+    User.findOne({ "uid": uid, "favourites.id": id })
+      .then((result) => {
+        if (result !== null) return res.status(200).json({ favourited: true });
+        else return res.status(200).json({ favourited: false });
+      })
+      .catch((e) => res.status(400).json({ message: 'Error.' }));
+  } catch (e) {
+    return res.status(400).json({ message: 'Error.' });
+  }
+};
