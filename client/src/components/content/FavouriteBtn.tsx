@@ -47,6 +47,7 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
               imgUrl: recipeThumbnail
             })
           })
+            .then(() => setIsFavourited(true))
         })
         .catch((error) => console.log('failed'));
     } else navigate('/login');
@@ -65,6 +66,7 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
             },
             body: JSON.stringify({ id: recipeId })
           })
+            .then(() => setIsFavourited(false))
         })
         .catch((error) => console.log('failed'));
     } else navigate('/login');
