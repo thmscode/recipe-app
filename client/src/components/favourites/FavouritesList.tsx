@@ -21,7 +21,7 @@ const FavouritesList: React.FC<UserObject> = ({ firstName, favourites }) => {
   return (
     <>
       <GridItem colSpan={12}>
-        <Text fontSize={'2xl'}>{userFirstName}'s Favourites</Text>
+        <Text fontSize={'3xl'}>{userFirstName}'s Favourites</Text>
       </GridItem>
       {favourites.length === 0 ?
       <GridItem colSpan={12}>
@@ -32,7 +32,7 @@ const FavouritesList: React.FC<UserObject> = ({ firstName, favourites }) => {
             <Card>
               <CardBody>
                 <Image src={recipe.imgUrl} />
-                <Stack>
+                <Stack spacing={4} mt={4}>
                   <Heading size={'md'} textAlign={'center'}>{recipe.title}</Heading>
                   <Divider />
                   <Text fontSize={'md'} textAlign={'center'}>

@@ -30,7 +30,7 @@ const Category = () => {
       templateColumns={'repeat(12, 1fr)'}
       px={48}
       py={12}
-      gridGap={8}>
+      gridGap={6}>
       {(typeof recipes === 'undefined') ?
         <LoadingSpinner /> :
         (recipes.map(recipe =>

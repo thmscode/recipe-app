@@ -33,7 +33,7 @@ const Favourites = () => {
       templateColumns={'repeat(12, 1fr)'}
       px={48}
       py={8}
-      gridGap={4}>
+      gridGap={6}>
       {user ?
         <FavouritesList
           firstName={user.firstName}

@@ -35,6 +35,7 @@ const AuthorizedControls = () => {
             as={'a'}
             href={'/favourites'}
             fontWeight={500}
+            _focus={{ color: 'white', bg: 'redwood.200' }}
             _hover={{ color: 'white', bg: 'redwood.200' }}>
             View Favourites
           </MenuItem>

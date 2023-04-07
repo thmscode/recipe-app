@@ -28,7 +28,7 @@ const CategoriesList = () => {
       templateColumns={'repeat(12, 1fr)'}
       px={48}
       py={12}
-      gridGap={8}>
+      gridGap={6}>
       {(typeof categories === 'undefined') ?
         <LoadingSpinner /> :
         (categories.map(category =>
@@ -36,7 +36,7 @@ const CategoriesList = () => {
             <Card>
               <CardBody>
                 <Image src={category.strCategoryThumb} />
-                <Stack mt={'4'} spacing={'4'}>
+                <Stack mt={4} spacing={4}>
                   <Heading size={'md'} textAlign={'center'}>{category.strCategory}</Heading>
                   <Divider />
                   <Text fontSize={'md'} textAlign={'center'}>
