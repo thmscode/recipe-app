@@ -13,6 +13,9 @@ const theme = extendTheme({
     xanthous: {
       200: '#FFE066',
       400: '#FCBF49'
+    },
+    offwhite: {
+      400: '#F5F5F5',
     }
   }
 });
