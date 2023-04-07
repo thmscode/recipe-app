@@ -8,6 +8,7 @@ import {
   Text,
   Divider,
   Link,
+  Image,
 } from "@chakra-ui/react";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
@@ -27,14 +28,15 @@ const CountriesList = () => {
       templateColumns={'repeat(12, 1fr)'}
       px={48}
       py={12}
-      gridGap={8}>
+      gridGap={6}>
       {(typeof countries === 'undefined') ?
         <LoadingSpinner /> :
         (countries.map(country =>
           <GridItem colSpan={2} key={nanoid()}>
             <Card>
               <CardBody>
-                <Stack mt={'4'} spacing={'4'}>
+                <Image src={`/images/flag_${country.strArea}.png`} />
+                <Stack mt={4} spacing={4}>
                   <Heading size={'md'} textAlign={'center'}>{country.strArea}</Heading>
                   <Divider />
                   <Text fontSize={'md'} textAlign={'center'}>
