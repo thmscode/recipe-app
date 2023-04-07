@@ -35,7 +35,7 @@ const CountriesList = () => {
           <GridItem colSpan={2} key={nanoid()}>
             <Card>
               <CardBody>
-                <Image src={`/images/flag_${country.strArea}.png`} border={'1px'} borderColor={'offwhite.400'} />
+                <Image src={`/images/flag_${country.strArea}.png`} border={'1px'} borderColor={'gray.200'} />
                 <Stack mt={4} spacing={4}>
                   <Heading size={'md'} textAlign={'center'}>{country.strArea}</Heading>
                   <Divider />
