@@ -26,7 +26,7 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
 
   return (
     <>
-      <GridItem colSpan={12}>
+      <GridItem colSpan={12} rowSpan={1}>
         <Flex justify={'space-between'} align={'center'}>
           <Box>
             <Text fontSize={'3xl'}>{recipe.title}</Text>
@@ -38,20 +38,10 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
             recipeThumbnail={recipe.thumbnail} />
         </Flex>
       </GridItem>
-      <GridItem colSpan={3}>
+      <GridItem colSpan={4} rowSpan={5}>
         <Image src={recipe.thumbnail} />
       </GridItem>
-      <GridItem colSpan={9} rowSpan={5}>
-        <Text as={'u'} fontSize={'2xl'}>Instructions</Text>
-        <Box whiteSpace={'pre-wrap'} px={2}>
-          <Text>{recipe.instructions}</Text>
-          <Divider my={2} />
-          <Link fontSize={'lg'} href={`${recipe.youtubeUrl}`} isExternal>
-            Tutorial <ExternalLinkIcon />
-          </Link>
-        </Box>
-      </GridItem>
-      <GridItem colSpan={3}>
+      <GridItem colSpan={8} rowSpan={1}>
         <Box>
           <Text as={'u'} fontSize={'2xl'}>Ingredients</Text>
           <UnorderedList>
@@ -64,6 +54,17 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
               </GridItem>
             </Grid>
           </UnorderedList>
+        </Box>
+      </GridItem>
+      <GridItem colSpan={8} rowSpan={4}>
+        <Text as={'u'} fontSize={'2xl'}>Instructions</Text>
+        <Box whiteSpace={'pre-wrap'} px={2}>
+          <Text>{recipe.instructions}</Text>
+          <br />
+          <Divider my={2} />
+          <Link fontSize={'lg'} href={`${recipe.youtubeUrl}`} isExternal>
+            Tutorial <ExternalLinkIcon />
+          </Link>
         </Box>
       </GridItem>
     </>

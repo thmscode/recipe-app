@@ -13,11 +13,11 @@ const Recipe = () => {
     fetch(`/api/recipes/${id}`)
       .then(res => res.json())
       .then(data => setRecipe(data.recipe));
-  }, []);
+  }, [id]);
 
   return (
     <Grid
-      templateColumns={'repeat(12, auto)'}
+      templateColumns={'repeat(12, 1fr)'}
       templateRows={'repeat(6, auto)'}
       px={48}
       py={8}
