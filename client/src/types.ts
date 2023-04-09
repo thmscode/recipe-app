@@ -50,6 +50,14 @@ export type UserObject = {
   }[]
 };
 
+export type Favourites = {
+  favourites: {
+    id: string,
+    title: string,
+    imgUrl: string
+  }[]
+};
+
 export type FavouriteBtnProps = {
   recipeId: String,
   recipeTitle: String,

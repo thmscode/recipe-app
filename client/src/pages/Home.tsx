@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Flex,
   Text
@@ -14,18 +13,21 @@ const Home = () => {
       bgImage={"linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1528712306091-ed0763094c98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1940&q=80')"}
       bgPosition={'center'}
       flexGrow={'1'}
-      direction={'column'}
-      justifyContent={'center'}
-      px={36}>
-      <Flex justify={'space-between'} align={'center'} pb={24}>
-        <Flex direction={'column'}>
-          <Text fontSize={'6xl'} color={'white'} fontWeight={'bold'}>Healthy Eating</Text>
-          <Text fontSize={'5xl'} color={'white'}>Starts Here</Text>
+      px={{ base: '4', sm: '8', md: '20', xl: '36' }}
+      py={24}>
+      <Flex
+        direction={{ base: 'column', xl: 'row' }}
+        justify={{ base: 'center', xl: 'space-between' }}
+        align={'center'}
+        gap={{ base: '12', xl: '0' }}>
+        <Flex direction={'column'} align={'center'}>
+          <Text fontSize={{ base: '3xl', md: '4xl', lg: '5xl', xl: '6xl' }} color={'white'} fontWeight={'bold'}>Healthy Eating</Text>
+          <Text fontSize={{ base: '2xl', md: '3xl', lg: '4xl', xl: '5xl' }} color={'white'}>Starts Here</Text>
         </Flex>
-        <Box w={'40%'}>
-          <Text color={'white'}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod quis labore rem maiores inventore atque ratione laboriosam culpa non! Iure mollitia sint quia id commodi soluta voluptates quis dolorem quisquam!
-            Placeat ratione obcaecati debitis soluta nulla sunt voluptatem eaque expedita excepturi. Culpa natus doloremque aliquid atque quidem blanditiis ea facilis voluptatem! Nisi, ratione eaque! Quaerat, assumenda!
+        <Flex direction={'column'} w={{ base: '100%', xl: '40%' }}>
+          <Text color={'white'} fontSize={'sm'}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ipsum, ex culpa iure blanditiis esse voluptates earum? Ex veniam beatae quam quod cum dolorem velit nihil iste expedita? Voluptatibus!
+            Mollitia, iure assumenda, dolorum totam perspiciatis nulla quasi voluptatem doloremque est iusto, deserunt unde nostrum? Eveniet beatae nulla recusandae deleniti eos asperiores, nam aliquam animi culpa sapiente.
           </Text>
           <Button
             as={'a'}
@@ -33,12 +35,13 @@ const Home = () => {
             fontWeight={500}
             href={currentUser ? '/categories' : '/signup'}
             bg={'redwood.400'}
-            fontSize={'lg'}
+            fontSize={{ base: 'md', sm: 'lg' }}
             mt={3}
-            _hover={{ bg: 'redwood.200' }}>
+            _hover={{ bg: 'redwood.200' }}
+            alignSelf={{ base: 'center', xl: 'start' }}>
             Get Started
           </Button>
-        </Box>
+        </Flex>
       </Flex>
     </Flex>
   );

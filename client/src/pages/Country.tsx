@@ -23,12 +23,12 @@ const Country = () => {
     fetch(`/api/countries/${country}`)
       .then(res => res.json())
       .then(data => setRecipes(data.recipes.meals));
-  }, []);
+  }, [country]);
 
   return (
     <Grid
-      templateColumns={'repeat(12, 1fr)'}
-      px={48}
+      templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(6, 1fr)', lg: 'repeat(10, 1fr)', xl: 'repeat(12, 1fr)' }}
+      px={{ base: '4', sm: '8', md: '20', xl: '36' }}
       py={12}
       gridGap={6}>
       {(typeof recipes === 'undefined') ?
@@ -39,9 +39,9 @@ const Country = () => {
               <CardBody>
                 <Image src={recipe.strMealThumb} />
                 <Stack mt={'4'} spacing={'4'}>
-                  <Heading size={'md'} textAlign={'center'}>{recipe.strMeal}</Heading>
+                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'}>{recipe.strMeal}</Heading>
                   <Divider />
-                  <Text fontSize={'md'} textAlign={'center'}>
+                  <Text fontSize={{ base: 'sm', lg: 'md' }} textAlign={'center'}>
                     <Link href={`/meal_recipe/${recipe.idMeal}`}>View Recipe</Link>
                   </Text>
                 </Stack>

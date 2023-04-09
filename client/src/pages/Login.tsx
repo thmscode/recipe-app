@@ -19,8 +19,8 @@ const Login = () => {
       grow={1}>
       <Box
         rounded={'lg'}
-        shadow={'xl'}
-        p={12}
+        shadow={{ md: 'md', lg: 'xl' }}
+        p={{ base: '6', md: '12' }}
         w={'lg'}>
         <Text fontSize={'2xl'} fontWeight={'600'} align={'center'} mb={4}>Login</Text>
         <LoginForm />

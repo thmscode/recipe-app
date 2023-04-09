@@ -28,7 +28,7 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
         })
         .catch((error) => console.log('failed'));
     }
-  }, []);
+  }, [currentUser, recipeId]);
 
   const addHandler = () => {
     if (currentUser) {

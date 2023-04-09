@@ -2,6 +2,7 @@ import {
   Card,
   CardBody,
   Divider,
+  Grid,
   GridItem,
   Heading,
   Image,
@@ -9,33 +10,23 @@ import {
   Stack,
   Text
 } from "@chakra-ui/react";
-import { UserObject } from "../../types";
+import { Favourites } from "../../types";
 
-const FavouritesList: React.FC<UserObject> = ({ firstName, favourites }) => {
-  const capitalizeName = (name: string) => {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  };
-
-  const userFirstName = capitalizeName(firstName);
-
+const FavouritesList: React.FC<Favourites> = ({ favourites }) => {
   return (
     <>
-      <GridItem colSpan={12}>
-        <Text fontSize={'3xl'}>{userFirstName}'s Favourites</Text>
-      </GridItem>
-      {favourites.length === 0 ?
-      <GridItem colSpan={12}>
-        <Text fontSize={'xl'} textAlign={'center'}>No favourites yet!</Text>
-      </GridItem> :
-        (favourites.map(recipe =>
+      <Grid
+        templateColumns={{ base: 'repeat(3, 1fr)', md: 'repeat(9, 1fr)', lg: 'repeat(12, 1fr)' }}
+        gridGap={6}>
+        {(favourites.map(recipe =>
           <GridItem colSpan={3} key={recipe.id}>
             <Card>
               <CardBody>
                 <Image src={recipe.imgUrl} />
                 <Stack spacing={4} mt={4}>
-                  <Heading size={'md'} textAlign={'center'}>{recipe.title}</Heading>
+                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'}>{recipe.title}</Heading>
                   <Divider />
-                  <Text fontSize={'md'} textAlign={'center'}>
+                  <Text fontSize={{ base: 'sm', lg: 'md' }} textAlign={'center'}>
                     <Link href={`/meal_recipe/${recipe.id}`}>View Recipe</Link>
                   </Text>
                 </Stack>
@@ -43,6 +34,7 @@ const FavouritesList: React.FC<UserObject> = ({ firstName, favourites }) => {
             </Card>
           </GridItem>
         ))}
+      </Grid>
     </>
   );
 }

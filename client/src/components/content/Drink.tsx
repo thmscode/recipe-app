@@ -21,34 +21,34 @@ const Drink: React.FC<DrinkProps> = ({ recipe }) => {
 
   return (
     <>
-      <GridItem colSpan={12}>
+      <GridItem area={'header'}>
         <Box>
-          <Text fontSize={'3xl'}>{recipe.title}</Text>
-          <Text fontSize={'md'}>{recipe.alcoholic} - {recipe.category}</Text>
+          <Text fontSize={{ base: 'lg', md: '2xl', lg: '3xl' }}>{recipe.title}</Text>
+          <Text fontSize={{ base: 'sm', md: 'md' }}>{recipe.alcoholic} - {recipe.category}</Text>
         </Box>
       </GridItem>
-      <GridItem colSpan={4} rowSpan={5}>
+      <GridItem area={'image'}>
         <Image src={recipe.thumbnail} />
       </GridItem>
-      <GridItem colSpan={8} rowSpan={1}>
-        <Text as={'u'} fontSize={'2xl'}>Ingredients</Text>
+      <GridItem area={'ingredients'}>
+        <Text as={'u'} fontSize={{ base: 'md', md: 'lg', lg: '2xl' }}>Ingredients</Text>
         <UnorderedList>
           <Grid templateColumns={'repeat(2, 1fr)'} gap={2}>
             <GridItem key={nanoid()} px={4}>
-              {ingredientsArray1.map(ingredient => <ListItem fontSize={'md'} key={nanoid()}>{ingredient}</ListItem>)}
+              {ingredientsArray1.map(ingredient => <ListItem fontSize={{ base: 'sm', lg: 'md' }} key={nanoid()}>{ingredient}</ListItem>)}
             </GridItem>
             <GridItem px={4}>
-              {ingredientsArray2.map(ingredient => <ListItem fontSize={'md'} key={nanoid()}>{ingredient}</ListItem>)}
+              {ingredientsArray2.map(ingredient => <ListItem fontSize={{ base: 'sm', lg: 'md' }} key={nanoid()}>{ingredient}</ListItem>)}
             </GridItem>
           </Grid>
         </UnorderedList>
       </GridItem>
-      <GridItem colSpan={8} rowSpan={4}>
-        <Text as={'u'} fontSize={'2xl'}>Instructions</Text>
+      <GridItem area={'instructions'}>
+        <Text as={'u'} fontSize={{ base: 'md', md: 'lg', lg: '2xl' }}>Instructions</Text>
         <Box whiteSpace={'pre-wrap'} px={2}>
-          <Text>{recipe.instructions}</Text>
+          <Text fontSize={{ base: 'sm', lg: 'md' }}>{recipe.instructions}</Text>
           <br />
-          <Text as={'i'}>Note: Serving in a {recipe.glass} is optional.</Text>
+          <Text as={'i'} fontSize={{ base: 'sm', lg: 'md' }}>Note: Serving in a {recipe.glass} is optional.</Text>
         </Box>
       </GridItem>
     </>

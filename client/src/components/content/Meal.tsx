@@ -26,11 +26,11 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
 
   return (
     <>
-      <GridItem colSpan={12} rowSpan={1}>
+      <GridItem area={'header'}>
         <Flex justify={'space-between'} align={'center'}>
           <Box>
-            <Text fontSize={'3xl'}>{recipe.title}</Text>
-            <Text fontSize={'md'}>{recipe.area} - {recipe.category}</Text>
+            <Text fontSize={{ base: 'lg', md: '2xl', lg: '3xl' }}>{recipe.title}</Text>
+            <Text fontSize={{ base: 'sm', md: 'md' }}>{recipe.area} - {recipe.category}</Text>
           </Box>
           <FavouriteBtn
             recipeId={recipe.id}
@@ -38,31 +38,31 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
             recipeThumbnail={recipe.thumbnail} />
         </Flex>
       </GridItem>
-      <GridItem colSpan={4} rowSpan={5}>
+      <GridItem area={'image'}>
         <Image src={recipe.thumbnail} />
       </GridItem>
-      <GridItem colSpan={8} rowSpan={1}>
+      <GridItem area={'ingredients'}>
         <Box>
-          <Text as={'u'} fontSize={'2xl'}>Ingredients</Text>
+          <Text as={'u'} fontSize={{ base: 'md', md: 'lg', lg: '2xl' }}>Ingredients</Text>
           <UnorderedList>
             <Grid templateColumns={'repeat(2, 1fr)'} gap={2}>
               <GridItem key={nanoid()} px={4}>
-                {ingredientsArray1.map(ingredient => <ListItem fontSize={'md'} key={nanoid()}>{ingredient}</ListItem>)}
+                {ingredientsArray1.map(ingredient => <ListItem fontSize={{ base: 'sm', lg: 'md' }} key={nanoid()}>{ingredient}</ListItem>)}
               </GridItem>
               <GridItem px={4}>
-                {ingredientsArray2.map(ingredient => <ListItem fontSize={'md'} key={nanoid()}>{ingredient}</ListItem>)}
+                {ingredientsArray2.map(ingredient => <ListItem fontSize={{ base: 'sm', lg: 'md' }} key={nanoid()}>{ingredient}</ListItem>)}
               </GridItem>
             </Grid>
           </UnorderedList>
         </Box>
       </GridItem>
-      <GridItem colSpan={8} rowSpan={4}>
-        <Text as={'u'} fontSize={'2xl'}>Instructions</Text>
+      <GridItem area={'instructions'}>
+        <Text as={'u'} fontSize={{ base: 'md', md: 'lg', lg: '2xl' }}>Instructions</Text>
         <Box whiteSpace={'pre-wrap'} px={2}>
-          <Text>{recipe.instructions}</Text>
+          <Text fontSize={{ base: 'sm', lg: 'md' }}>{recipe.instructions}</Text>
           <br />
           <Divider my={2} />
-          <Link fontSize={'lg'} href={`${recipe.youtubeUrl}`} isExternal>
+          <Link fontSize={{ base: 'md', md: 'lg' }} href={`${recipe.youtubeUrl}`} isExternal>
             Tutorial <ExternalLinkIcon />
           </Link>
         </Box>
