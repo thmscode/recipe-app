@@ -19,40 +19,43 @@ const AuthorizedControls = () => {
   };
 
   return (
-    <Flex alignItems={'center'}>
-      <Menu>
-        <MenuButton
-          as={Button}
-          rightIcon={<ChevronDownIcon />}
-          bg={'transparent'}
+    <>
+      <Flex hideBelow={'md'} alignItems={'center'}>
+        <Menu>
+          <MenuButton
+            as={Button}
+            rightIcon={<ChevronDownIcon />}
+            bg={'transparent'}
+            fontSize={'lg'}
+            _hover={{ bg: 'transparent', textDecor: 'underline' }}
+            _active={{ bg: 'transparent', textDecor: 'underline' }}>
+            My Account
+          </MenuButton>
+          <MenuList>
+            <MenuItem
+              as={'a'}
+              href={'/favourites'}
+              fontWeight={500}
+              _focus={{ color: 'white', bg: 'redwood.200' }}
+              _hover={{ color: 'white', bg: 'redwood.200' }}>
+              View Favourites
+            </MenuItem>
+          </MenuList>
+        </Menu>
+        <Button
+          as={'a'}
+          color={'white'}
+          fontWeight={500}
+          href={'/'}
+          bg={'redwood.400'}
           fontSize={'lg'}
-          _hover={{ bg: 'transparent', textDecor: 'underline' }}
-          _active={{ bg: 'transparent', textDecor: 'underline' }}>
-          My Account
-        </MenuButton>
-        <MenuList>
-          <MenuItem
-            as={'a'}
-            href={'/favourites'}
-            fontWeight={500}
-            _focus={{ color: 'white', bg: 'redwood.200' }}
-            _hover={{ color: 'white', bg: 'redwood.200' }}>
-            View Favourites
-          </MenuItem>
-        </MenuList>
-      </Menu>
-      <Button
-        as={'a'}
-        color={'white'}
-        fontWeight={500}
-        href={'/'}
-        bg={'redwood.400'}
-        fontSize={'lg'}
-        _hover={{ bg: 'redwood.200' }}
-        onClick={handleLogout}>
-        Logout
-      </Button>
-    </Flex>
+          _hover={{ bg: 'redwood.200' }}
+          onClick={handleLogout}>
+          Logout
+        </Button>
+      </Flex>
+    </>
+
   );
 }
 
