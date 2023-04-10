@@ -14,6 +14,7 @@ const NavigationLinks = () => {
       <Flex hideBelow={'md'} alignItems={'center'} ml={6}>
         <Menu>
           <MenuButton
+            fontWeight={400}
             as={Button}
             rightIcon={<ChevronDownIcon />}
             bg={'transparent'}
@@ -43,6 +44,7 @@ const NavigationLinks = () => {
         </Menu>
         <Menu>
           <MenuButton
+            fontWeight={400}
             as={Button}
             rightIcon={<ChevronDownIcon />}
             bg={'transparent'}

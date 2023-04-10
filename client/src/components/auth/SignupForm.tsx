@@ -62,6 +62,7 @@ const SignupForm = () => {
               <span style={{ color: 'red' }}> * </span>
             </FormLabel>
             <Input
+              fontSize={{ base: 'sm', sm: 'md' }}
               id={'firstName'}
               type={'text'}
               placeholder={'First Name'}
@@ -75,6 +76,7 @@ const SignupForm = () => {
               <span style={{ color: 'red' }}> * </span>
             </FormLabel>
             <Input
+              fontSize={{ base: 'sm', sm: 'md' }}
               id={'lastName'}
               type={'text'}
               placeholder={'Last Name'}
@@ -89,6 +91,7 @@ const SignupForm = () => {
             <span style={{ color: 'red' }}> * </span>
           </FormLabel>
           <Input
+            fontSize={{ base: 'sm', sm: 'md' }}
             id={'email'}
             type={'email'}
             placeholder={'eg. myname@example.com'}
@@ -103,6 +106,7 @@ const SignupForm = () => {
           </FormLabel>
           <InputGroup>
             <Input
+              fontSize={{ base: 'sm', sm: 'md' }}
               id={'password'}
               type={showPassword ? 'text' : 'password'}
               placeholder={'Enter your desired password'}
@@ -125,6 +129,7 @@ const SignupForm = () => {
           </FormLabel>
           <InputGroup>
             <Input
+              fontSize={{ base: 'sm', sm: 'md' }}
               id={'confirmPassword'}
               type={showPassword ? 'text' : 'password'}
               placeholder={'Re-enter your password'}
@@ -142,6 +147,7 @@ const SignupForm = () => {
 
         <Box>
           <Button
+            fontWeight={400}
             disabled={loading}
             type={'submit'}
             bg={'redwood.400'}

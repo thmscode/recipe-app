@@ -53,6 +53,7 @@ const LoginForm = () => {
 
         <Box>
           <Button
+            fontWeight={400}
             disabled={loading}
             type={'submit'}
             bg={'redwood.400'}

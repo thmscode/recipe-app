@@ -32,7 +32,7 @@ const Home = () => {
           <Button
             as={'a'}
             color={'white'}
-            fontWeight={500}
+            fontWeight={400}
             href={currentUser ? '/categories' : '/signup'}
             bg={'redwood.400'}
             fontSize={{ base: 'md', sm: 'lg' }}

@@ -81,6 +81,7 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
           type={'submit'}
           bg={'redwood.400'}
           color={'white'}
+          fontWeight={400}
           _hover={{ bg: 'redwood.200' }}
           onClick={removeHandler}>
           Remove from Favourites
@@ -91,6 +92,7 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
           type={'submit'}
           bg={'redwood.400'}
           color={'white'}
+          fontWeight={400}
           _hover={{ bg: 'redwood.200' }}
           onClick={addHandler}>
           Add to Favourites

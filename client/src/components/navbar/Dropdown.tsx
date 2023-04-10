@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useAuth } from '../../contexts/auth-context';
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import { Navigate } from 'react-router-dom';
 
 const Dropdown = () => {
   const [isBrowseClicked, setIsBrowseClicked] = useState<boolean>(false);
@@ -20,6 +21,7 @@ const Dropdown = () => {
       .then(() => {
         setIsBrowseClicked(false);
         setIsRandomClicked(false);
+        <Navigate to='/' />
       })
       .catch((error) => console.log(error));
   };
@@ -29,6 +31,7 @@ const Dropdown = () => {
       <Box>
         <Stack spacing={0}>
           <Button
+            fontWeight={400}
             rightIcon={<ChevronDownIcon />}
             bg={'transparent'}
             fontSize={'md'}
@@ -43,6 +46,7 @@ const Dropdown = () => {
             </Stack>
           ) : null}
           <Button
+            fontWeight={400}
             rightIcon={<ChevronDownIcon />}
             bg={'transparent'}
             fontSize={'md'}

@@ -25,7 +25,12 @@ const CategoriesList = () => {
 
   return (
     <Grid
-      templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(6, 1fr)', lg: 'repeat(10, 1fr)', xl: 'repeat(12, 1fr)' }}
+      templateColumns={{
+        base: 'repeat(4, 1fr)',
+        sm: 'repeat(6, 1fr)',
+        lg: 'repeat(8, 1fr)',
+        xl: 'repeat(10, 1fr)'
+      }}
       px={{ base: '4', sm: '8', md: '20', xl: '36' }}
       py={12}
       gridGap={6}>
@@ -37,7 +42,7 @@ const CategoriesList = () => {
               <CardBody>
                 <Image src={category.strCategoryThumb} />
                 <Stack mt={4} spacing={4}>
-                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'}>{category.strCategory}</Heading>
+                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'} fontFamily={'Poppins'}>{category.strCategory}</Heading>
                   <Divider />
                   <Text fontSize={{ base: 'sm', lg: 'md' }} textAlign={'center'}>
                     <Link href={`/categories/${category.strCategory}`}>View All</Link>

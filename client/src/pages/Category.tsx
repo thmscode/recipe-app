@@ -39,7 +39,7 @@ const Category = () => {
               <CardBody>
                 <Image src={recipe.strMealThumb} />
                 <Stack mt={'4'} spacing={'4'}>
-                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'}>{recipe.strMeal}</Heading>
+                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'} fontFamily={'Poppins'}>{recipe.strMeal}</Heading>
                   <Divider />
                   <Text fontSize={{ base: 'sm', lg: 'md' }} textAlign={'center'}>
                     <Link href={`/meal_recipe/${recipe.idMeal}`}>View Recipe</Link>

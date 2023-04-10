@@ -23,6 +23,7 @@ const AuthorizedControls = () => {
       <Flex hideBelow={'md'} alignItems={'center'}>
         <Menu>
           <MenuButton
+            fontWeight={400}
             as={Button}
             rightIcon={<ChevronDownIcon />}
             bg={'transparent'}
@@ -45,7 +46,7 @@ const AuthorizedControls = () => {
         <Button
           as={'a'}
           color={'white'}
-          fontWeight={500}
+          fontWeight={400}
           href={'/'}
           bg={'redwood.400'}
           fontSize={'lg'}

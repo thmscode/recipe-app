@@ -16,7 +16,13 @@ const FavouritesList: React.FC<Favourites> = ({ favourites }) => {
   return (
     <>
       <Grid
-        templateColumns={{ base: 'repeat(3, 1fr)', md: 'repeat(9, 1fr)', lg: 'repeat(12, 1fr)' }}
+        templateColumns={{
+          base: 'repeat(3, 1fr)',
+          sm: 'repeat(6, 1fr)',
+          md: 'repeat(9, 1fr)',
+          lg: 'repeat(12, 1fr)',
+          xl: 'repeat(15, 1fr)'
+        }}
         gridGap={6}>
         {(favourites.map(recipe =>
           <GridItem colSpan={3} key={recipe.id}>
@@ -24,7 +30,7 @@ const FavouritesList: React.FC<Favourites> = ({ favourites }) => {
               <CardBody>
                 <Image src={recipe.imgUrl} />
                 <Stack spacing={4} mt={4}>
-                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'}>{recipe.title}</Heading>
+                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'} fontFamily={'Poppins'}>{recipe.title}</Heading>
                   <Divider />
                   <Text fontSize={{ base: 'sm', lg: 'md' }} textAlign={'center'}>
                     <Link href={`/meal_recipe/${recipe.id}`}>View Recipe</Link>
