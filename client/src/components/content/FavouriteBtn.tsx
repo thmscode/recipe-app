@@ -76,14 +76,18 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
     <>
       {isFavourited ?
         <Button
+          w={'100%'}
+          size={{ base: 'sm', lg: 'md' }}
           type={'submit'}
           bg={'redwood.400'}
           color={'white'}
           _hover={{ bg: 'redwood.200' }}
           onClick={removeHandler}>
-          Remove From Favourites
+          Remove from Favourites
         </Button> :
         <Button
+          w={'100%'}
+          size={{ base: 'sm', lg: 'md' }}
           type={'submit'}
           bg={'redwood.400'}
           color={'white'}
@@ -93,7 +97,6 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
         </Button>
       }
     </>
-
   );
 }
 

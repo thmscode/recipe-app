@@ -32,14 +32,22 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
             <Text fontSize={{ base: 'lg', md: '2xl', lg: '3xl' }}>{recipe.title}</Text>
             <Text fontSize={{ base: 'sm', md: 'md' }}>{recipe.area} - {recipe.category}</Text>
           </Box>
-          <FavouriteBtn
-            recipeId={recipe.id}
-            recipeTitle={recipe.title}
-            recipeThumbnail={recipe.thumbnail} />
+          <Box hideBelow={'sm'}>
+            <FavouriteBtn
+              recipeId={recipe.id}
+              recipeTitle={recipe.title}
+              recipeThumbnail={recipe.thumbnail} />
+          </Box>
         </Flex>
       </GridItem>
       <GridItem area={'image'}>
         <Image src={recipe.thumbnail} />
+        <Box mt={4} hideFrom={'md'}>
+          <FavouriteBtn
+            recipeId={recipe.id}
+            recipeTitle={recipe.title}
+            recipeThumbnail={recipe.thumbnail} />
+        </Box>
       </GridItem>
       <GridItem area={'ingredients'}>
         <Box>

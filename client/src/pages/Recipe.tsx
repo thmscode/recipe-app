@@ -35,7 +35,7 @@ const Recipe = () => {
         <LoadingSpinner /> :
         <Meal recipe={recipe} />}
     </Grid>
-  )
+  );
 }
 
 export default Recipe;
