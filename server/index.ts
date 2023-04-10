@@ -2,6 +2,7 @@ require('dotenv').config();
 import express, { Express } from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import helmet from 'helmet';
 import countriesRouter from './routes/countries';
 import categoriesRouter from './routes/categories';
 import recipesRouter from './routes/recipes';
@@ -20,6 +21,7 @@ mongoose.connect(DATABASE_URL)
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 
 app.use('/api/countries', countriesRouter);
 app.use('/api/categories', categoriesRouter);
