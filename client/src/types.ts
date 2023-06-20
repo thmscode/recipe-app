@@ -1,10 +1,3 @@
-export type Category = {
-  idCategory: number,
-  strCategory: string,
-  strCategoryThumb: string,
-  strCategoryDescription: string
-};
-
 export type MealRecipe = {
   id: string,
   title: string,
@@ -14,10 +7,6 @@ export type MealRecipe = {
   thumbnail: string,
   youtubeUrl: string,
   ingredients: string[]
-};
-
-export type MealProps = {
-  recipe: MealRecipe;
 };
 
 export type DrinkRecipe = {
@@ -31,35 +20,8 @@ export type DrinkRecipe = {
   ingredients: string[]
 };
 
-export type DrinkProps = {
-  recipe: DrinkRecipe;
-};
-
 export type Recipe = {
   strMeal: string,
   strMealThumb: string,
   idMeal: string
-};
-
-export type UserObject = {
-  firstName: string,
-  favourites: {
-    id: string,
-    title: string,
-    imgUrl: string
-  }[]
-};
-
-export type Favourites = {
-  favourites: {
-    id: string,
-    title: string,
-    imgUrl: string
-  }[]
-};
-
-export type FavouriteBtnProps = {
-  recipeId: String,
-  recipeTitle: String,
-  recipeThumbnail: String
 };
