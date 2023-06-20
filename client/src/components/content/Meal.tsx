@@ -10,12 +10,16 @@ import {
   Text,
   UnorderedList
 } from "@chakra-ui/react";
-import { MealProps } from "../../types";
 import { nanoid } from 'nanoid';
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import FavouriteBtn from "./FavouriteBtn";
+import { MealRecipe } from "../../types";
 
-const Meal: React.FC<MealProps> = ({ recipe }) => {
+type Props = {
+  recipe: MealRecipe
+}
+
+const Meal: React.FC<Props> = ({ recipe }) => {
   const ingredientsArray1: string[] = [];
   const ingredientsArray2: string[] = [];
 
@@ -36,7 +40,8 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
             <FavouriteBtn
               recipeId={recipe.id}
               recipeTitle={recipe.title}
-              recipeThumbnail={recipe.thumbnail} />
+              recipeThumbnail={recipe.thumbnail}
+            />
           </Box>
         </Flex>
       </GridItem>
@@ -46,7 +51,8 @@ const Meal: React.FC<MealProps> = ({ recipe }) => {
           <FavouriteBtn
             recipeId={recipe.id}
             recipeTitle={recipe.title}
-            recipeThumbnail={recipe.thumbnail} />
+            recipeThumbnail={recipe.thumbnail}
+          />
         </Box>
       </GridItem>
       <GridItem area={'ingredients'}>

@@ -7,10 +7,15 @@ import {
   Text,
   UnorderedList
 } from "@chakra-ui/react";
-import { DrinkProps } from "../../types";
-import { nanoid } from 'nanoid';
 
-const Drink: React.FC<DrinkProps> = ({ recipe }) => {
+import { nanoid } from 'nanoid';
+import { DrinkRecipe } from "../../types";
+
+type Props = {
+  recipe: DrinkRecipe
+}
+
+const Drink: React.FC<Props> = ({ recipe }) => {
   const ingredientsArray1: string[] = [];
   const ingredientsArray2: string[] = [];
 

@@ -10,9 +10,16 @@ import {
   Stack,
   Text
 } from "@chakra-ui/react";
-import { Favourites } from "../../types";
 
-const FavouritesList: React.FC<Favourites> = ({ favourites }) => {
+type Props = {
+  favourites: {
+    id: string,
+    title: string,
+    imgUrl: string
+  }[]
+}
+
+const FavouritesList: React.FC<Props> = ({ favourites }) => {
   return (
     <>
       <Grid
@@ -23,14 +30,21 @@ const FavouritesList: React.FC<Favourites> = ({ favourites }) => {
           lg: 'repeat(12, 1fr)',
           xl: 'repeat(15, 1fr)'
         }}
-        gridGap={6}>
+        gridGap={6}
+      >
         {(favourites.map(recipe =>
           <GridItem colSpan={3} key={recipe.id}>
             <Card>
               <CardBody>
                 <Image src={recipe.imgUrl} />
                 <Stack spacing={4} mt={4}>
-                  <Heading size={{ base: 'sm', lg: 'md' }} textAlign={'center'} fontFamily={'Poppins'}>{recipe.title}</Heading>
+                  <Heading
+                    size={{ base: 'sm', lg: 'md' }}
+                    textAlign={'center'}
+                    fontFamily={'Poppins'}
+                  >
+                    {recipe.title}
+                  </Heading>
                   <Divider />
                   <Text fontSize={{ base: 'sm', lg: 'md' }} textAlign={'center'}>
                     <Link href={`/meal_recipe/${recipe.id}`}>View Recipe</Link>

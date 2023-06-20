@@ -10,7 +10,8 @@ const UnauthorizedControls = () => {
           fontWeight={500}
           variant={'link'}
           href={'/login'}
-          fontSize={'lg'}>
+          fontSize={'lg'}
+        >
           Log In
         </Button>
         <Button
@@ -20,12 +21,12 @@ const UnauthorizedControls = () => {
           href={'/signup'}
           bg={'redwood.400'}
           fontSize={'lg'}
-          _hover={{ bg: 'redwood.200' }}>
+          _hover={{ bg: 'redwood.200' }}
+        >
           Sign Up
         </Button>
       </HStack>
     </>
-
   );
 }
 

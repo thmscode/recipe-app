@@ -17,34 +17,36 @@ const Navbar = () => {
   const { currentUser } = useAuth();
 
   return (
-    <Box>
-      <Flex
-        minH={'75px'}
-        align={'center'}
-        justify={'space-between'}
-        borderStyle={'solid'}
-        borderWidth={1}
-        px={{ base: '4', sm: '8', md: '20', xl: '36' }}>
-        <Flex>
-          <Logo />
-          <NavigationLinks />
+    <>
+      <Box>
+        <Flex
+          minH={'75px'}
+          align={'center'}
+          justify={'space-between'}
+          borderStyle={'solid'}
+          borderWidth={1}
+          px={{ base: '4', sm: '8', md: '20', xl: '36' }}
+        >
+          <Flex>
+            <Logo />
+            <NavigationLinks />
+          </Flex>
+          {!(currentUser) ?
+            <UnauthorizedControls /> :
+            <AuthorizedControls />
+          }
+          <IconButton
+            size={'md'}
+            bg={'white'}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ lg: 'none' }}
+            onClick={isOpen ? onClose : onOpen}
+          />
         </Flex>
-        {!(currentUser) ?
-          <UnauthorizedControls /> :
-          <AuthorizedControls />
-        }
-        <IconButton
-          size={'md'}
-          bg={'white'}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label={'Open Menu'}
-          display={{ lg: 'none' }}
-          onClick={isOpen ? onClose : onOpen}
-        />
-      </Flex>
-
-      {isOpen ? <Dropdown /> : null}
-    </Box>
+        {isOpen ? <Dropdown /> : null}
+      </Box>
+    </>
   );
 }
 

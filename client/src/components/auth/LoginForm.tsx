@@ -23,7 +23,7 @@ const LoginForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const submitHandler = (data: LoginFormValues) => {
+  const submitHandler = (data: LoginFormValues): void => {
     setLoading(true);
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then(() => navigate('/'))
@@ -32,40 +32,43 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)}>
-      <Stack spacing={6}>
-        <FormControl>
-          <FormLabel htmlFor={'email'}>Email</FormLabel>
-          <Input
-            id={'email'}
-            type={'email'}
-            {...register('email')} />
-          {errors?.email && <FormErrorMsg>{errors.email.message}</FormErrorMsg>}
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor={'password'}>Password</FormLabel>
-          <Input
-            id={'password'}
-            type={'password'}
-            {...register('password')} />
-          {errors?.password && <FormErrorMsg>{errors.password.message}</FormErrorMsg>}
-        </FormControl>
+    <>
+      <form onSubmit={handleSubmit(submitHandler)}>
+        <Stack spacing={6}>
+          <FormControl>
+            <FormLabel htmlFor={'email'}>Email</FormLabel>
+            <Input
+              id={'email'}
+              type={'email'}
+              {...register('email')} />
+            {errors?.email && <FormErrorMsg>{errors.email.message}</FormErrorMsg>}
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor={'password'}>Password</FormLabel>
+            <Input
+              id={'password'}
+              type={'password'}
+              {...register('password')} />
+            {errors?.password && <FormErrorMsg>{errors.password.message}</FormErrorMsg>}
+          </FormControl>
 
-        <Box>
-          <Button
-            fontWeight={400}
-            disabled={loading}
-            type={'submit'}
-            bg={'redwood.400'}
-            w={'100%'}
-            color={'white'}
-            _hover={{ bg: 'redwood.200' }}>
-            {loading ? <Spinner color={'white'} /> : 'Login'}
-          </Button>
-          {error && <Text mt={3} fontSize={'md'} align={'center'} color={'red.500'} fontWeight={500}>{error}</Text>}
-        </Box>
-      </Stack>
-    </form>
+          <Box>
+            <Button
+              fontWeight={400}
+              disabled={loading}
+              type={'submit'}
+              bg={'redwood.400'}
+              w={'100%'}
+              color={'white'}
+              _hover={{ bg: 'redwood.200' }}
+            >
+              {loading ? <Spinner color={'white'} /> : 'Login'}
+            </Button>
+            {error && <Text mt={3} fontSize={'md'} align={'center'} color={'red.500'} fontWeight={500}>{error}</Text>}
+          </Box>
+        </Stack>
+      </form>
+    </>
   );
 }
 

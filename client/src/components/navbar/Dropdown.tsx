@@ -16,7 +16,7 @@ const Dropdown = () => {
   const [isRandomClicked, setIsRandomClicked] = useState<boolean>(false);
   const { currentUser } = useAuth();
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     signOut(auth)
       .then(() => {
         setIsBrowseClicked(false);
@@ -36,7 +36,8 @@ const Dropdown = () => {
             bg={'transparent'}
             fontSize={'md'}
             _active={{ bg: 'transparent', textDecor: 'underline' }}
-            onClick={() => setIsBrowseClicked(prevState => !prevState)}>
+            onClick={() => setIsBrowseClicked(prevState => !prevState)}
+          >
             Browse Recipes
           </Button>
           {isBrowseClicked ? (
@@ -51,7 +52,8 @@ const Dropdown = () => {
             bg={'transparent'}
             fontSize={'md'}
             _active={{ bg: 'transparent', textDecor: 'underline' }}
-            onClick={() => setIsRandomClicked(prevState => !prevState)}>
+            onClick={() => setIsRandomClicked(prevState => !prevState)}
+          >
             Get Random Recipe
           </Button>
           {isRandomClicked ? (

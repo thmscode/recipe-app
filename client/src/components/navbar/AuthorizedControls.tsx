@@ -12,7 +12,7 @@ import { auth } from "../../firebase";
 import { Navigate } from "react-router-dom";
 
 const AuthorizedControls = () => {
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     signOut(auth)
       .then(() => <Navigate to='/' />)
       .catch((error) => console.log(error));
@@ -29,7 +29,8 @@ const AuthorizedControls = () => {
             bg={'transparent'}
             fontSize={'lg'}
             _hover={{ bg: 'transparent', textDecor: 'underline' }}
-            _active={{ bg: 'transparent', textDecor: 'underline' }}>
+            _active={{ bg: 'transparent', textDecor: 'underline' }}
+          >
             My Account
           </MenuButton>
           <MenuList>
@@ -38,7 +39,8 @@ const AuthorizedControls = () => {
               href={'/favourites'}
               fontWeight={500}
               _focus={{ color: 'white', bg: 'redwood.200' }}
-              _hover={{ color: 'white', bg: 'redwood.200' }}>
+              _hover={{ color: 'white', bg: 'redwood.200' }}
+            >
               View Favourites
             </MenuItem>
           </MenuList>
@@ -51,7 +53,8 @@ const AuthorizedControls = () => {
           bg={'redwood.400'}
           fontSize={'lg'}
           _hover={{ bg: 'redwood.200' }}
-          onClick={handleLogout}>
+          onClick={handleLogout}
+        >
           Logout
         </Button>
       </Flex>

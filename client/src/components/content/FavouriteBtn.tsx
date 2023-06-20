@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../contexts/auth-context";
-import { FavouriteBtnProps } from "../../types";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
 
-const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, recipeThumbnail }) => {
+type Props = {
+  recipeId: string,
+  recipeTitle: string,
+  recipeThumbnail: string
+}
+
+const FavouriteBtn: React.FC<Props> = ({ recipeId, recipeTitle, recipeThumbnail }) => {
   const [isFavourited, setIsFavourited] = useState<boolean>(false);
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -30,7 +35,7 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
     }
   }, [currentUser, recipeId]);
 
-  const addHandler = () => {
+  const addHandler = (): void => {
     if (currentUser) {
       currentUser.getIdToken()
         .then((token) => {
@@ -53,7 +58,7 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
     } else navigate('/login');
   };
 
-  const removeHandler = () => {
+  const removeHandler = (): void => {
     if (currentUser) {
       currentUser.getIdToken()
         .then((token) => {
@@ -83,7 +88,8 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
           color={'white'}
           fontWeight={400}
           _hover={{ bg: 'redwood.200' }}
-          onClick={removeHandler}>
+          onClick={removeHandler}
+        >
           Remove from Favourites
         </Button> :
         <Button
@@ -94,7 +100,8 @@ const FavouriteBtn: React.FC<FavouriteBtnProps> = ({ recipeId, recipeTitle, reci
           color={'white'}
           fontWeight={400}
           _hover={{ bg: 'redwood.200' }}
-          onClick={addHandler}>
+          onClick={addHandler}
+        >
           Add to Favourites
         </Button>
       }

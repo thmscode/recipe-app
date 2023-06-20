@@ -6,12 +6,15 @@ type Props = {
 
 const FormErrorMsg: React.FC<Props> = ({ children }) => {
   return (
-    <Text
-      fontSize={{base: 'xs', sm: 'sm'}}
-      pos={'absolute'}
-      color={'red.400'}>
-      {children}
-    </Text>
+    <>
+      <Text
+        fontSize={{ base: 'xs', sm: 'sm' }}
+        pos={'absolute'}
+        color={'red.400'}
+      >
+        {children}
+      </Text>
+    </>
   );
 }
 

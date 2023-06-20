@@ -18,7 +18,7 @@ const Favourites = () => {
   const { currentUser } = useAuth();
   const [user, setUser] = useState<UserObject>();
 
-  const capitalizeName = (name: string) => {
+  const capitalizeName = (name: string): string => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
