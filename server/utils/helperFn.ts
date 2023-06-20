@@ -5,7 +5,7 @@ import {
   MealRecipe,
 } from "./types";
 
-const formatIngredients = (recipe: APIMealRecipe | APIDrinkRecipe) => {
+const formatIngredients = (recipe: APIMealRecipe | APIDrinkRecipe): string[] => {
   const items: string[] = [];
   const measurements: string[] = [];
   const ingredients: string[] = [];
@@ -24,7 +24,7 @@ const formatIngredients = (recipe: APIMealRecipe | APIDrinkRecipe) => {
   return ingredients;
 };
 
-export const formatMealResponse = (recipe: APIMealRecipe) => {
+export const formatMealResponse = (recipe: APIMealRecipe): MealRecipe => {
   const ingredients = formatIngredients(recipe);
 
   const formattedRecipe: MealRecipe = {
@@ -40,7 +40,7 @@ export const formatMealResponse = (recipe: APIMealRecipe) => {
   return formattedRecipe;
 };
 
-export const formatDrinkResponse = (recipe: APIDrinkRecipe) => {
+export const formatDrinkResponse = (recipe: APIDrinkRecipe): DrinkRecipe => {
   const ingredients = formatIngredients(recipe);
 
   const formattedRecipe: DrinkRecipe = {
