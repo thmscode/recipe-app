@@ -31,7 +31,7 @@ PrettyGood is a full-stack web application targeting those who want to explore n
 * Create a Firebase project and paste your credentials into the `.env.local` file
 
 **Server Directory**
-* Create a .env file in the root server directory
+* Create a `.env` file in the root server directory
 * Create two environment variables `PORT` and `DATABASE_URL` that will hold the port number, and mongoDB URL respectively
 * Navigate to your Firebase project's settings and generate a private key under `Service Accounts`; a .JSON file will be downloaded onto your device
 * Move the .JSON file holding your private key to `server/firebase` and rename it to `serviceAccount.json`
