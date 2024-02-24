@@ -1,90 +1,28 @@
-import {
-  Button,
-  Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-} from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { Flex, Menu, MenuList } from "@chakra-ui/react";
+import Select from "./Select";
+import Option from "./Option";
 
 const Navigation = () => {
   return (
     <>
-      <Flex
-        hideBelow={'md'}
-        alignItems={'center'}
-        ml={6}
-      >
+      <Flex hideBelow={"md"} alignItems={"center"} ml={6}>
         <Menu>
-          <MenuButton
-            fontWeight={400}
-            as={Button}
-            rightIcon={<ChevronDownIcon />}
-            bg={'transparent'}
-            fontSize={'lg'}
-            _hover={{ bg: 'transparent', textDecor: 'underline' }}
-            _active={{ bg: 'transparent', textDecor: 'underline' }}
-          >
-            Browse
-          </MenuButton>
+          <Select>Browse</Select>
           <MenuList>
-            <MenuItem
-              as={'a'}
-              href={'/categories'}
-              fontWeight={500}
-              _focus={{ color: 'white', bg: 'redwood.200' }}
-              _hover={{ color: 'white', bg: 'redwood.200' }}
-            >
-              Meals By Category
-            </MenuItem>
-            <MenuItem
-              as={'a'}
-              href={'/countries'}
-              fontWeight={500}
-              _focus={{ color: 'white', bg: 'redwood.200' }}
-              _hover={{ color: 'white', bg: 'redwood.200' }}
-            >
-              Meals By Country
-            </MenuItem>
+            <Option href="/categories">Meals By Category</Option>
+            <Option href="/countries">Meals By Country</Option>
           </MenuList>
         </Menu>
         <Menu>
-          <MenuButton
-            fontWeight={400}
-            as={Button}
-            rightIcon={<ChevronDownIcon />}
-            bg={'transparent'}
-            fontSize={'lg'}
-            _hover={{ bg: 'transparent', textDecor: 'underline' }}
-            _active={{ bg: 'transparent', textDecor: 'underline' }}
-          >
-            Random
-          </MenuButton>
+          <Select>Random</Select>
           <MenuList>
-            <MenuItem
-              as={'a'}
-              href={'/random_meal'}
-              fontWeight={500}
-              _focus={{ color: 'white', bg: 'redwood.200' }}
-              _hover={{ color: 'white', bg: 'redwood.200' }}
-            >
-              Meal Recipe
-            </MenuItem>
-            <MenuItem
-              as={'a'}
-              href={'/random_drink'}
-              fontWeight={500}
-              _focus={{ color: 'white', bg: 'redwood.200' }}
-              _hover={{ color: 'white', bg: 'redwood.200' }}
-            >
-              Drink Recipe
-            </MenuItem>
+            <Option href="/random_meal">Meal Recipe</Option>
+            <Option href="/random_drink">Drink Recipe</Option>
           </MenuList>
         </Menu>
       </Flex>
     </>
   );
-}
+};
 
 export default Navigation;
