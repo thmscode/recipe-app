@@ -6,9 +6,9 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import Logo from './Logo';
-import NavigationLinks from './NavigationLinks';
-import UnauthorizedControls from './UnauthorizedControls';
-import AuthorizedControls from './AuthorizedControls';
+import Navigation from './browser/Navigation';
+import UnauthorizedControls from './browser/UnauthorizedControls';
+import AuthorizedControls from './browser/AuthorizedControls';
 import Dropdown from './mobile/Dropdown';
 import { useAuth } from '../../contexts/auth-context';
 
@@ -29,7 +29,7 @@ const Navbar = () => {
         >
           <Flex>
             <Logo />
-            <NavigationLinks />
+            <Navigation />
           </Flex>
           {!(currentUser) ?
             <UnauthorizedControls /> :

@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
-const NavigationLinks = () => {
+const Navigation = () => {
   return (
     <>
       <Flex
@@ -87,4 +87,4 @@ const NavigationLinks = () => {
   );
 }
 
-export default NavigationLinks;
+export default Navigation;
