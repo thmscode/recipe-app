@@ -75,6 +75,7 @@ const NavigationLinks = () => {
               as={'a'}
               href={'/random_drink'}
               fontWeight={500}
+              _focus={{ color: 'white', bg: 'redwood.200' }}
               _hover={{ color: 'white', bg: 'redwood.200' }}
             >
               Drink Recipe

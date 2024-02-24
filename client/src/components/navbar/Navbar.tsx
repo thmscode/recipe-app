@@ -9,7 +9,7 @@ import Logo from './Logo';
 import NavigationLinks from './NavigationLinks';
 import UnauthorizedControls from './UnauthorizedControls';
 import AuthorizedControls from './AuthorizedControls';
-import Dropdown from './Dropdown';
+import Dropdown from './mobile/Dropdown';
 import { useAuth } from '../../contexts/auth-context';
 
 const Navbar = () => {
