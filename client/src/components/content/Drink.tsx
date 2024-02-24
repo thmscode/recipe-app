@@ -10,11 +10,7 @@ import {
 import { nanoid } from 'nanoid';
 import { DrinkRecipe } from "../../types";
 
-type Props = {
-  recipe: DrinkRecipe
-}
-
-const Drink: React.FC<Props> = ({ recipe }) => {
+const Drink: React.FC<{ recipe: DrinkRecipe }> = ({ recipe }) => {
   const ingredientsArray1: string[] = [];
   const ingredientsArray2: string[] = [];
 

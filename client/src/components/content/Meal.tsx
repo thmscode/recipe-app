@@ -15,11 +15,7 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import FavouriteBtn from "./FavouriteBtn";
 import { MealRecipe } from "../../types";
 
-type Props = {
-  recipe: MealRecipe
-}
-
-const Meal: React.FC<Props> = ({ recipe }) => {
+const Meal: React.FC<{ recipe: MealRecipe }> = ({ recipe }) => {
   const ingredientsArray1: string[] = [];
   const ingredientsArray2: string[] = [];
 
