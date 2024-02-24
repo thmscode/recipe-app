@@ -1,27 +1,24 @@
-export type MealRecipe = {
-  id: string,
-  title: string,
-  category: string,
-  area: string,
-  instructions: string,
-  thumbnail: string,
-  youtubeUrl: string,
-  ingredients: string[]
-};
+interface Recipe {
+  id: string;
+  title: string;
+  category: string;
+  instructions: string;
+  thumbnail: string;
+  ingredients: string[];
+}
 
-export type DrinkRecipe = {
-  id: string,
-  title: string,
-  category: string,
-  alcoholic: string,
-  glass: string,
-  instructions: string,
-  thumbnail: string,
-  ingredients: string[]
-};
+export interface MealRecipe extends Recipe {
+  area: string;
+  youtubeUrl: string;
+}
 
-export type Recipe = {
-  strMeal: string,
-  strMealThumb: string,
-  idMeal: string
+export interface DrinkRecipe extends Recipe {
+  alcoholic: string;
+  glass: string;
+}
+
+export type RecipeCard = {
+  strMeal: string;
+  strMealThumb: string;
+  idMeal: string;
 };
