@@ -13,10 +13,10 @@ import {
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
-import { Recipe } from "../types";
+import { RecipeCard } from "../types";
 
 const Category = () => {
-  const [recipes, setRecipes] = useState<Recipe[]>();
+  const [recipes, setRecipes] = useState<RecipeCard[]>();
   const { category } = useParams();
 
   useEffect(() => {

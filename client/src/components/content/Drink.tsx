@@ -7,7 +7,6 @@ import {
   Text,
   UnorderedList
 } from "@chakra-ui/react";
-
 import { nanoid } from 'nanoid';
 import { DrinkRecipe } from "../../types";
 
